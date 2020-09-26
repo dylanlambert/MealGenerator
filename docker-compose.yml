@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - 80:80
+    volumes:
+      - ./httpd.conf:/etc/apache2/sites-available/000-default.conf:ro
+      - ./src:/var/www/html
+    user: '1000'
+    sysctls:
+      - net.ipv4.ip_unprivileged_port_start=0
+  database:
+    image: mysql:8.0.21
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: glop
+      MYSQL_DATABASE: foods
