@@ -6,14 +6,19 @@ services:
       context: .
     ports:
       - 80:80
+    environment:
+      - COMPOSER_MEMORY_LIMIT=3G
     volumes:
       - ./httpd.conf:/etc/apache2/sites-available/000-default.conf:ro
       - ./src:/var/www/html
+      - ./.composer:/home/dev/.composer:delegated
     user: '1000'
     sysctls:
       - net.ipv4.ip_unprivileged_port_start=0
   database:
     image: mysql:8.0.21
+    ports:
+      - 3306:3306
     volumes:
       - ./data:/var/lib/mysql
     environment:
