@@ -8,14 +8,14 @@ use App\Application\Recipe\Dto\RecipeDto;
 
 final class RecipeRetrieverResponse
 {
-    private RecipeDto $recipe;
+    private ?RecipeDto $recipe;
 
-    public function __construct(RecipeDto $recipe)
+    public function __construct(?RecipeDto $recipe)
     {
         $this->recipe = $recipe;
     }
 
-    public function getRecipe(): RecipeDto
+    public function getRecipe(): ?RecipeDto
     {
         return $this->recipe;
     }

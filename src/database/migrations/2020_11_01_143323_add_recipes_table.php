@@ -17,7 +17,7 @@ class AddRecipesTable extends Migration
         {
             $table->uuid('id');
             $table->string('name');
-            $table->string('preparation_time');
+            $table->integer('preparation_time');
         });
     }
 

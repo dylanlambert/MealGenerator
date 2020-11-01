@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Application\Recipe;
 
 use App\Application\Recipe\Dto\RecipeDto;
+use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\RecipeRepository;
 
 final class RecipeRetriever
@@ -18,10 +19,16 @@ final class RecipeRetriever
 
     public function retrieve(RecipeRetrieverRequest $request): RecipeRetrieverResponse
     {
-        $recipe = $this->recipeRepository->find($request->getId());
-        $preparationTime = $recipe->getPreparationTime() / 60 . 'm';
-        $recipeDto = new RecipeDto($recipe->getName(), $preparationTime);
+        try {
+            $recipe = $this->recipeRepository->find($request->getId());
 
-        return new RecipeRetrieverResponse($recipeDto);
+            $preparationTime = $recipe->getPreparationTime() / 60 . 'm';
+            $recipeDto = new RecipeDto($recipe->getName(), $preparationTime);
+
+            return new RecipeRetrieverResponse($recipeDto);
+
+        } catch (NotFoundException $exception) {
+            return new RecipeRetrieverResponse(null);
+        }
     }
 }
