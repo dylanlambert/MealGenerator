@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc6c4d28-5c9f-4f21-a4d2-fe0d13f4a9e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.composer/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/auth.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/files/composer/package-versions-deprecated/d7f894d866af959f4b08783ba0aa693989b0597b.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/files/doctrine/annotations/d53dc1bb46f8d721d005da389edbe2678daa65dc.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/files/doctrine/collections/07fae24d0ad8e1fe9b87d3249715e7a99d08af38.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/files/doctrine/common/4227172001ff203adf46da53ebe44919eb6cfb8f.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/files/doctrine/persistence/4387babc844a0794313371832ff1b743a468bfb5.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/files/ramsey/uuid-doctrine/620ecde915415706dc1dbeef6a520e9c02a836ab.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/vcs/https---github.com-doctrine-orm.git/objects/pack/pack-df0d70923ed85a49d8f3e84667bf51822ee9a847.idx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/vcs/https---github.com-doctrine-orm.git/objects/pack/pack-df0d70923ed85a49d8f3e84667bf51822ee9a847.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.composer/cache/vcs/https---github.com-doctrine-orm.git/packed-refs" afterDir="false" />
+    <list default="true" id="cc6c4d28-5c9f-4f21-a4d2-fe0d13f4a9e2" name="Default Changelist" comment="add recipe retriever and registerer">
       <change afterPath="$PROJECT_DIR$/src/.phpstorm.meta.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/_ide_helper.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/RecipeDto.php" afterDir="false" />
@@ -33,22 +22,18 @@
       <change afterPath="$PROJECT_DIR$/src/app/HasUuidPrimeryKey.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Handlers/RecipeRegisterDatabaseHandler.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Repositories/EloquentRecipeRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/EloquentTransactionBroker.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/LaravelEventDispatcher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/LaravelTransactionBroker.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/RamseyUuidFactory.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/Uuid.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/Recipe.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/database/migrations/2020_11_01_143323_add_recipes_table.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeRegistererSpec.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeRetrieverSpec.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spec/App/Infrastructure/Handlers/RecipeRegisterDatabaseHandlerSpec.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/foods.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/foods.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Providers/EventServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.lock" afterDir="false" />
     </list>
@@ -253,7 +238,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601128581758</updated>
       <workItem from="1601128582774" duration="4642000" />
-      <workItem from="1604240703719" duration="8118000" />
+      <workItem from="1604240703719" duration="8588000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1601132710652</created>
@@ -262,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601132710652</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix some composer issue &amp; add some requirement">
+      <created>1604249038238</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604249038238</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,7 +265,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="Fix some composer issue &amp; add some requirement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix some composer issue &amp; add some requirement" />
   </component>
   <component name="WindowStateProjectService">
     <state x="755" y="392" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601133200294">
@@ -284,10 +277,10 @@
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
     <state x="1541" y="405" width="419" height="671" key="#com.intellij.ide.util.MemberChooser/72.27.3368.1413@72.27.3368.1413" timestamp="1604248362352" />
-    <state x="1497" y="476" width="508" height="522" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604248727017">
+    <state x="1497" y="476" width="508" height="522" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604249205499">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
-    <state x="1497" y="476" width="508" height="522" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1604248727017" />
+    <state x="1497" y="476" width="508" height="522" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1604249205499" />
     <state x="1489" y="491" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604248376115">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
@@ -300,10 +293,10 @@
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
     <state x="1458" y="598" width="586" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/72.27.3368.1413@72.27.3368.1413" timestamp="1604244905102" />
-    <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2" timestamp="1601132710541">
+    <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2" timestamp="1604249252979">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
-    <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2/72.27.3368.1413@72.27.3368.1413" timestamp="1601132710541" />
+    <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2/72.27.3368.1413@72.27.3368.1413" timestamp="1604249252979" />
     <state x="1022" y="633" width="281" height="203" key="Github.ShareDialog" timestamp="1601132756315">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
@@ -332,10 +325,10 @@
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
     <state x="1582" y="488" width="337" height="498" key="refactoring.ChangeSignatureDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1604247415181" />
-    <state x="826" y="345" width="672" height="678" key="search.everywhere.popup" timestamp="1604248818289">
+    <state x="826" y="345" width="672" height="678" key="search.everywhere.popup" timestamp="1604249131426">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
-    <state x="826" y="345" width="672" height="678" key="search.everywhere.popup/72.27.3368.1413@72.27.3368.1413" timestamp="1604248818289" />
+    <state x="826" y="345" width="672" height="678" key="search.everywhere.popup/72.27.3368.1413@72.27.3368.1413" timestamp="1604249131426" />
     <state x="807" y="650" width="537" height="187" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1601130378790">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
