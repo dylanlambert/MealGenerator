@@ -2,12 +2,18 @@
 
 namespace spec\App\Application\Recipe;
 
+use App\Application\Recipe\Dto\IngredientDto;
 use App\Application\Recipe\Dto\RecipeDto;
 use App\Application\Recipe\RecipeRetrieverRequest;
+use App\Domain\Entities\Ingredient;
+use App\Domain\Entities\MeasuredIngredient;
+use App\Domain\Entities\MeasuredIngredientList;
 use App\Domain\Entities\Recipe;
 use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\RecipeRepository;
-use App\Domain\Utils\StringId;
+use App\Domain\Utils\Id\StringId;
+use App\Domain\Utils\Measurement\Gramme;
+use App\Domain\Utils\Measurement\Milliliter;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -22,17 +28,34 @@ class RecipeRetrieverSpec extends ObjectBehavior
     {
         $request = new RecipeRetrieverRequest(new StringId('recipe-id'));
 
+        $measuredIngredients = new MeasuredIngredientList(
+            ...[
+                new MeasuredIngredient(
+                    new Gramme(100),
+                    new Ingredient(new StringId('ingredient-id-1'), 'Fromage')
+                ),
+                new MeasuredIngredient(
+                    new Milliliter(200),
+                    new Ingredient(new StringId('ingredient-id-2'), 'Crème')
+                ),
+            ]
+        );
         $recipeEntity = new Recipe(
             $request->getId(),
             'Recipe Name',
-            600
+            600,
+            $measuredIngredients
         );
 
         $recipeRepository->find($request->getId())->shouldBeCalled()->willReturn($recipeEntity);
 
         $recipeDto = new RecipeDto(
             'Recipe Name',
-            '10m'
+            '10m',
+            [
+                new IngredientDto('Fromage', '100g'),
+                new IngredientDto('Crème', '20cl'),
+            ]
         );
 
         $this->retrieve($request)->getRecipe()->shouldBeLike($recipeDto);

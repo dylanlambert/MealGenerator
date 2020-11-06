@@ -5,7 +5,7 @@ namespace spec\App\Application\Recipe;
 use App\Application\Recipe\RecipeRegisterer;
 use App\Application\Recipe\RecipeRegistererRequest;
 use App\Domain\Commands\RecipeRegistererCommand;
-use App\Domain\Utils\CommandBus;
+use App\Domain\Utils\Command\CommandBus;
 use PhpSpec\ObjectBehavior;
 
 class RecipeRegistererSpec extends ObjectBehavior

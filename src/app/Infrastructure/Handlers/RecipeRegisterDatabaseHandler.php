@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Handlers;
 
 use App\Domain\Commands\RecipeRegistererCommand;
-use App\Domain\Utils\IdFactory;
+use App\Domain\Utils\Id\IdFactory;
 use App\Recipe;
 
 final class RecipeRegisterDatabaseHandler

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Utils;
 
-use App\Domain\Utils\Id;
+use App\Domain\Utils\Id\Id;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 use Ramsey\Uuid\UuidInterface;
 

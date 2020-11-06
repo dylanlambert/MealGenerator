@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRecipesTable extends Migration
+class AddQuantity extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class AddRecipesTable extends Migration
      */
     public function up()
     {
-        Schema::create('recipes', function (Blueprint $table)
-        {
-            $table->uuid('id')->primary();
-            $table->string('name');
-            $table->integer('preparation_time');
-            $table->timestamps();
+        Schema::table('recipe_ingredients', function (Blueprint $table) {
+            $table->string('measurement');
+            $table->integer('quantity');
         });
     }
 
@@ -29,6 +26,9 @@ class AddRecipesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('recipes');
+        Schema::table('recipe_ingredients', function (Blueprint $table) {
+            $table->dropColumn('measurement');
+            $table->dropColumn('quantity');
+        });
     }
 }

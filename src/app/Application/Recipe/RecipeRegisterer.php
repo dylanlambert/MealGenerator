@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Application\Recipe;
 
 use App\Domain\Commands\RecipeRegistererCommand;
-use App\Domain\Utils\CommandBus;
+use App\Domain\Utils\Command\CommandBus;
 
 final class RecipeRegisterer
 {

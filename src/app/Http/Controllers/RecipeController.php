@@ -6,7 +6,7 @@ use App\Application\Recipe\RecipeRegisterer;
 use App\Application\Recipe\RecipeRegistererRequest;
 use App\Application\Recipe\RecipeRetriever;
 use App\Application\Recipe\RecipeRetrieverRequest;
-use App\Domain\Utils\StringId;
+use App\Domain\Utils\Id\StringId;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -19,7 +19,6 @@ class RecipeController extends Controller
         if($applicationResponse->getRecipe() === null) {
             return response()->json([], 400);
         }
-
 
         return view('Recipe.recipe', ['recipe' => $applicationResponse->getRecipe()]);
     }

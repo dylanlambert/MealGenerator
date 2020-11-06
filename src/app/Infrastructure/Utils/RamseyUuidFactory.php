@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Utils;
 
-use App\Domain\Utils\IdFactory;
+use App\Domain\Utils\Id\IdFactory;
 use Ramsey\Uuid\UuidFactory;
 
 final class RamseyUuidFactory implements IdFactory

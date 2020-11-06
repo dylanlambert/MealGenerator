@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Utils;
+namespace App\Domain\Utils\Id;
+
+use App\Domain\Utils\Id\Id;
 
 final class StringId implements Id
 {
@@ -18,4 +20,8 @@ final class StringId implements Id
         return $this->id;
     }
 
+    public static function fromString(string $id): Id
+    {
+        return new self($id);
+    }
 }

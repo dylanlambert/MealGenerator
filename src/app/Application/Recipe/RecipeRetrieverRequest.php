@@ -6,7 +6,7 @@ namespace App\Application\Recipe;
 
 
 
-use App\Domain\Utils\Id;
+use App\Domain\Utils\Id\Id;
 
 final class RecipeRetrieverRequest
 {

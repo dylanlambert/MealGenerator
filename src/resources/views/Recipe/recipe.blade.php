@@ -1,16 +1,56 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Recette : {{$recipe->getName()}}</title>
-</head>
-<body>
-        <h1>Recette : {{$recipe->getName()}} <small>{{$recipe->getPreparationTime()}}</small></h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda dolorem dolores labore laudantium modi non quos repellendus unde. Eaque et eum expedita impedit labore magnam natus necessitatibus placeat provident.
-        </p>
-</body>
-</html>
+@extends('layout')
+
+@section('content')
+
+    <div class="row">
+        <div class="col">
+            <h1 class="recipeTitle">
+                <i class="far fa-folder-open"></i> {{$recipe->getName()}}
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item prepTime amber">
+                    <i class="far fa-clock" ></i> {{$recipe->getPreparationTime()}}
+                </li>
+                @foreach($recipe->getIngredients() as $ingredient)
+                    <li class="list-group-item">
+                        <div>
+                            {{$ingredient->getName()}}
+                            <span style="float: right">
+                            {{$ingredient->getQuantity()}}
+                        </span>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+            <br>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Recette : </h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur cum debitis, error et
+                        ex fuga
+                        nihil nobis perspiciatis placeat quas qui quidem quo recusandae similique temporibus totam vel
+                        voluptates!
+                    </p>
+                    <p>Accusantium ad at aut, autem cumque deserunt dicta doloremque dolores, eius enim eos ex fugit
+                        labore
+                        libero magnam mollitia natus, non nostrum odit perspiciatis quae quam quos reprehenderit soluta
+                        voluptate!
+                    </p>
+                    <p>Debitis delectus deserunt eaque, eos facere fugit ipsum itaque magnam natus neque nihil odio
+                        praesentium qui sit tempore, vero voluptates voluptatibus! Aut, facere ipsa nemo odit officia
+                        quasi
+                        recusandae voluptatum.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

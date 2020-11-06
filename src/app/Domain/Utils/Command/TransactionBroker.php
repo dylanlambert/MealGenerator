@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Domain\Utils;
+namespace App\Domain\Utils\Command;
 
 
 interface TransactionBroker
