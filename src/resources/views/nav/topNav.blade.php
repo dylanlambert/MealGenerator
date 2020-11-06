@@ -10,7 +10,7 @@
                 <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/generator"><i class="fas fa-random"></i> WeekList</a>
+                <a class="nav-link" href="/recipes"><i class="fas fa-list-ul"></i> Recettes</a>
             </li>
         </ul>
     </div>

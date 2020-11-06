@@ -15,6 +15,7 @@ use App\Domain\Utils\Id\Id;
 use App\Domain\Utils\Measurement\Gramme;
 use App\Domain\Utils\Measurement\Milliliter;
 use App\Domain\Utils\Measurement\Unit;
+use App\Domain\Utils\PreparationTime\PreparationTime;
 use App\Infrastructure\Utils\Uuid;
 use App\Recipe as RecipeModel;
 use App\RecipeIngredient;
@@ -32,7 +33,7 @@ final class EloquentRecipeRepository implements RecipeRepository
         return new Recipe(
             Uuid::fromString($model->id),
             $model->name,
-            $model->preparation_time,
+            new PreparationTime($model->preparation_time),
             $this->measuredIngredientListFromRecipeModel($model),
         );
     }
@@ -42,15 +43,15 @@ final class EloquentRecipeRepository implements RecipeRepository
         $collection = RecipeModel::all();
         /** @var Recipe $recipes */
         $recipes = $collection->map(function (RecipeModel $recipe) {
-            new Recipe(
-                Id::fromString($recipe->id),
+            return new Recipe(
+                Uuid::fromString($recipe->id),
                 $recipe->name,
-                $recipe->preparation_time,
+                new PreparationTime($recipe->preparation_time),
                 $this->measuredIngredientListFromRecipeModel($recipe),
             );
         });
 
-        return new RecipeList($recipes);
+        return new RecipeList(...$recipes);
     }
 
     private function measuredIngredientListFromRecipeModel(RecipeModel $model)

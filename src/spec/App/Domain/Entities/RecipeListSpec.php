@@ -9,6 +9,7 @@ use App\Domain\Entities\Recipe;
 use App\Domain\Entities\RecipeList;
 use App\Domain\Utils\Id\StringId;
 use App\Domain\Utils\Measurement\Gramme;
+use App\Domain\Utils\PreparationTime\PreparationTime;
 use PhpSpec\ObjectBehavior;
 
 class RecipeListSpec extends ObjectBehavior
@@ -19,7 +20,7 @@ class RecipeListSpec extends ObjectBehavior
             new Recipe(
                 new StringId('recipe-id-1'),
                 'Recipe 1',
-                600,
+                new PreparationTime(600),
                 new MeasuredIngredientList(
                 ...[
                     new MeasuredIngredient(
@@ -36,7 +37,7 @@ class RecipeListSpec extends ObjectBehavior
             new Recipe(
                 new StringId('recipe-id-2'),
                 'Recipe 2',
-                3600,
+                new PreparationTime(3600),
                 new MeasuredIngredientList(
                 ...[
                     new MeasuredIngredient(
@@ -56,7 +57,7 @@ class RecipeListSpec extends ObjectBehavior
             new Recipe(
                 new StringId('recipe-id-1'),
                 'Recipe 1',
-                600,
+                new PreparationTime(600),
                 new MeasuredIngredientList(
                 ...[
                     new MeasuredIngredient(
@@ -72,7 +73,7 @@ class RecipeListSpec extends ObjectBehavior
             ),
         );
 
-        $this->getUnderPreparationTime(1800)->shouldBeLike($resultList);
+        $this->getUnderPreparationTime(new PreparationTime(1800))->shouldBeLike($resultList);
     }
 
     function it_checks_if_not_empty()
@@ -81,7 +82,7 @@ class RecipeListSpec extends ObjectBehavior
             new Recipe(
                 new StringId('recipe-id-1'),
                 'Recipe 1',
-                600,
+                new PreparationTime(600),
                 new MeasuredIngredientList(
                 ...[
                     new MeasuredIngredient(
@@ -98,7 +99,7 @@ class RecipeListSpec extends ObjectBehavior
             new Recipe(
                 new StringId('recipe-id-2'),
                 'Recipe 2',
-                3600,
+                new PreparationTime(3600),
                 new MeasuredIngredientList(
                 ...[
                     new MeasuredIngredient(

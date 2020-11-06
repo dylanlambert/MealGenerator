@@ -6,6 +6,8 @@ use App\Application\Recipe\RecipeRegisterer;
 use App\Application\Recipe\RecipeRegistererRequest;
 use App\Application\Recipe\RecipeRetriever;
 use App\Application\Recipe\RecipeRetrieverRequest;
+use App\Application\Recipes\RecipesRetriever;
+use App\Application\Recipes\RecipesRetrieverRequest;
 use App\Domain\Utils\Id\StringId;
 use Illuminate\Http\Request;
 
@@ -27,5 +29,17 @@ class RecipeController extends Controller
     {
         $applicationRequest = new RecipeRegistererRequest($request['name'], $request['preparationTime']);
         $applicationResponse = $recipeRegisterer->register($applicationRequest);
+    }
+
+    public function getList(Request $request, RecipesRetriever $recipesRetriever)
+    {
+        $applicationRequest = new RecipesRetrieverRequest($request['preparationTime'] ?? null);
+        $applicationResponse = $recipesRetriever->retrieve($applicationRequest);
+
+        if($applicationResponse->getRecipes() === null) {
+            return response()->json([], 400);
+        }
+
+        return view('Recipe.recipeList', ['recipes' => $applicationResponse->getRecipes()]);
     }
 }

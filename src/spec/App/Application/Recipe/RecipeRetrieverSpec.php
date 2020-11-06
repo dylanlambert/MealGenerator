@@ -14,6 +14,7 @@ use App\Domain\Repositories\RecipeRepository;
 use App\Domain\Utils\Id\StringId;
 use App\Domain\Utils\Measurement\Gramme;
 use App\Domain\Utils\Measurement\Milliliter;
+use App\Domain\Utils\PreparationTime\PreparationTime;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -43,7 +44,7 @@ class RecipeRetrieverSpec extends ObjectBehavior
         $recipeEntity = new Recipe(
             $request->getId(),
             'Recipe Name',
-            600,
+            new PreparationTime(600),
             $measuredIngredients
         );
 
@@ -51,11 +52,12 @@ class RecipeRetrieverSpec extends ObjectBehavior
 
         $recipeDto = new RecipeDto(
             'Recipe Name',
-            '10m',
+            '10 minutes',
             [
                 new IngredientDto('Fromage', '100g'),
                 new IngredientDto('Crème', '20cl'),
-            ]
+            ],
+            '/recipe/recipe-id',
         );
 
         $this->retrieve($request)->getRecipe()->shouldBeLike($recipeDto);

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Utils;
 
-use App\Domain\Utils\Command\CommandBus;
-use App\Domain\Utils\Command\TransactionBroker;
+use App\Domain\Utils\Application\CommandBus;
+use App\Domain\Utils\Application\TransactionBroker;
 
 final class LaravelEventDispatcher implements CommandBus
 {

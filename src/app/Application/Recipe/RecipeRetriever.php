@@ -24,7 +24,7 @@ final class RecipeRetriever
         try {
             $recipe = $this->recipeRepository->find($request->getId());
 
-            $preparationTime = $recipe->getPreparationTime() / 60 . 'm';
+            $preparationTime = $recipe->getPreparationTime()->getFormattedPreparationTime();
             $recipeDto = new RecipeDto(
                 $recipe->getName(),
                 $preparationTime,
@@ -33,7 +33,8 @@ final class RecipeRetriever
                         $ingredient->getIngredient()->getName(),
                         $ingredient->getQuantity()->getFormatedQuantity()
                     )
-                )
+                ),
+                sprintf('/recipe/%s', $recipe->getId()),
             );
 
             return new RecipeRetrieverResponse($recipeDto);

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Entities;
 
+use App\Domain\Utils\PreparationTime\PreparationTime;
+
 final class RecipeList
 {
     /**
@@ -11,7 +13,7 @@ final class RecipeList
      */
     private array $recipes;
 
-    public function __construct(Recipe  ...$recipes)
+    public function __construct(Recipe ...$recipes)
     {
         $this->recipes = $recipes;
     }
@@ -27,11 +29,11 @@ final class RecipeList
         return array_map($callable, $this->recipes);
     }
 
-    public function getUnderPreparationTime(int $preparationTime)
+    public function getUnderPreparationTime(PreparationTime $preparationTime)
     {
         $recipes = array_filter(
             $this->recipes,
-            fn(Recipe $recipe) => $recipe->getPreparationTime() <= $preparationTime,
+            fn(Recipe $recipe) => $recipe->getPreparationTime()->under($preparationTime),
         );
 
         return new self(...$recipes);

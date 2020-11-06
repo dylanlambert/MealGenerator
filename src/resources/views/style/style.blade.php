@@ -9,6 +9,7 @@
 
     .pinkNav {
         background-color: #e64980;
+        color: #FFF;
     }
 
     .navbar-brand {
@@ -31,5 +32,11 @@
 
     .prepTime {
         font-size: 1.5em;
+    }
+
+    .search {
+        background-color: #f783ac;
+        border: none;
+        border-radius: ;
     }
 </style>

@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use App\Domain\Repositories\RecipeRepository;
-use App\Domain\Utils\Command\CommandBus;
+use App\Domain\Utils\Application\CommandBus;
 use App\Domain\Utils\Id\IdFactory;
-use App\Domain\Utils\Command\TransactionBroker;
+use App\Domain\Utils\Application\TransactionBroker;
 use App\Infrastructure\Repositories\EloquentRecipeRepository;
 use App\Infrastructure\Utils\LaravelTransactionBroker;
 use App\Infrastructure\Utils\LaravelEventDispatcher;

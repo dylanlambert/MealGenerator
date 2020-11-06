@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Domain\Utils\Command;
+namespace App\Domain\Utils\Application;
 
 
 use Exception;

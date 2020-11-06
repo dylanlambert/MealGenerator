@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('welcome');});
-
+Route::get('/', 'HomeController@get');
+Route::get('/recipes', 'RecipeController@getList');
 Route::post('/recipe', 'RecipeController@register');
 Route::get('/recipe/{recipeId}', 'RecipeController@get');

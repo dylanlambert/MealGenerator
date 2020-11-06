@@ -2,6 +2,8 @@
 
 namespace spec\App\Application\Recipes;
 
+use App\Application\Recipe\Dto\IngredientDto;
+use App\Application\Recipe\Dto\RecipeDto;
 use App\Application\Recipes\RecipesRetriever;
 use App\Application\Recipes\RecipesRetrieverRequest;
 use App\Domain\Entities\Ingredient;
@@ -12,6 +14,7 @@ use App\Domain\Entities\RecipeList;
 use App\Domain\Repositories\RecipeRepository;
 use App\Domain\Utils\Id\StringId;
 use App\Domain\Utils\Measurement\Gramme;
+use App\Domain\Utils\PreparationTime\PreparationTime;
 use PhpSpec\ObjectBehavior;
 
 class RecipesRetrieverSpec extends ObjectBehavior
@@ -29,7 +32,7 @@ class RecipesRetrieverSpec extends ObjectBehavior
             new Recipe(
                 new StringId('recipe-id-1'),
                 'Recipe 1',
-                600,
+                new PreparationTime(600),
                 new MeasuredIngredientList(
                 ...[
                     new MeasuredIngredient(
@@ -46,7 +49,7 @@ class RecipesRetrieverSpec extends ObjectBehavior
             new Recipe(
                 new StringId('recipe-id-2'),
                 'Recipe 2',
-                3600,
+                new PreparationTime(3600),
                 new MeasuredIngredientList(
                 ...[
                     new MeasuredIngredient(
@@ -64,6 +67,27 @@ class RecipesRetrieverSpec extends ObjectBehavior
 
         $recipeRepository->get()->shouldBeCalled()->willReturn($recipeList);
 
-        $this->retrieve($request)->getRecipes()->shouldBeLike($recipeList);
+        $dtos = [
+            new RecipeDto(
+                'Recipe 1',
+                '10 minutes',
+                [
+                    new IngredientDto('ingredientName', '100g'),
+                    new IngredientDto('ingredientName', '100g'),
+                ],
+                '/recipe/recipe-id-1',
+            ),
+            new RecipeDto(
+                'Recipe 2',
+                '60 minutes',
+                [
+                    new IngredientDto('ingredientName', '100g'),
+                    new IngredientDto('ingredientName', '100g'),
+                ],
+                '/recipe/recipe-id-2',
+            )
+        ];
+
+        $this->retrieve($request)->getRecipes()->shouldBeLike($dtos);
     }
 }

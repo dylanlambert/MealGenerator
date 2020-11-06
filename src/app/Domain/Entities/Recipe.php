@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\Domain\Entities;
 
 use App\Domain\Utils\Id\Id;
+use App\Domain\Utils\PreparationTime\PreparationTime;
 
 final class Recipe
 {
     private Id $id;
     private string $name;
-    private int $preparationTime;
+    private PreparationTime $preparationTime;
     private MeasuredIngredientList $measuredIngredients;
 
-    public function __construct(Id $id, string $name, int $preparationTime, MeasuredIngredientList $measuredIngredients)
+    public function __construct(Id $id, string $name, PreparationTime $preparationTime, MeasuredIngredientList $measuredIngredients)
     {
         $this->id = $id;
         $this->name = $name;
@@ -31,7 +32,7 @@ final class Recipe
         return $this->name;
     }
 
-    public function getPreparationTime(): int
+    public function getPreparationTime(): PreparationTime
     {
         return $this->preparationTime;
     }

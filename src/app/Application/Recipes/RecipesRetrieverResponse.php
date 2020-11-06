@@ -8,14 +8,14 @@ use App\Domain\Entities\RecipeList;
 
 final class RecipesRetrieverResponse
 {
-    private RecipeList $recipes;
+    private array $recipes;
 
-    public function __construct(RecipeList $recipes)
+    public function __construct(array $recipes)
     {
         $this->recipes = $recipes;
     }
 
-    public function getRecipes(): RecipeList
+    public function getRecipes(): array
     {
         return $this->recipes;
     }

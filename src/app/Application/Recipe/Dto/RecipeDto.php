@@ -9,12 +9,14 @@ final class RecipeDto
     private string $name;
     private string $preparationTime;
     private array $ingredients;
+    private string $url;
 
-    public function __construct(string $name, string $preparationTime, array $ingredients)
+    public function __construct(string $name, string $preparationTime, array $ingredients, string $url)
     {
         $this->name = $name;
         $this->preparationTime = $preparationTime;
         $this->ingredients = $ingredients;
+        $this->url = $url;
     }
 
     public function getName(): string
@@ -30,5 +32,10 @@ final class RecipeDto
     public function getIngredients(): array
     {
         return $this->ingredients;
+    }
+
+    public function getUrl(): string
+    {
+        return $this->url;
     }
 }
