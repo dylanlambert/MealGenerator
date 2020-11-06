@@ -4,11 +4,15 @@
     }
 
     body > main{
-        margin-top: 50px;
+        margin-top: 65px;
     }
 
     .pinkNav {
-        background-color: #f06595;
+        background-color: #e64980;
+    }
+
+    .navbar-brand {
+        font-size: 1.8em;
     }
 
     .recipeTitle {

@@ -2,59 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc6c4d28-5c9f-4f21-a4d2-fe0d13f4a9e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/IngredientDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Recipes/RecipesRetriever.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Recipes/RecipesRetrieverRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Recipes/RecipesRetrieverResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Entities/Ingredient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Entities/IngredientList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Entities/MeasuredIngredient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Entities/MeasuredIngredientList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Entities/RecipeList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Repositories/IngredientRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Id/Id.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Gramme.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Measurement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Milliliter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Unit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Repositories/EloquentIngredientRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Ingredient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/RecipeIngredient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/migrations/2020_11_05_195353_add_ingredients.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/migrations/2020_11_05_201426_add_ingredients_recipes_link.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/migrations/2020_11_05_202839_add_quantity.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/seeders/recipeSeed.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/views/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/views/nav/topNav.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/views/style/style.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipes/RecipesRetrieverSpec.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spec/App/Domain/Entities/RecipeListSpec.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/.phpstorm.meta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/RecipeDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/RecipeDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeRegisterer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeRegisterer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeRetriever.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeRetriever.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeRetrieverRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeRetrieverRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Entities/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Entities/Recipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Repositories/RecipeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Repositories/RecipeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/CommandBus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Command/CommandBus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/Id.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/IdFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Id/IdFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/StringId.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Id/StringId.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/TransactionBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Command/TransactionBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/RecipeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/RecipeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Handlers/RecipeRegisterDatabaseHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Handlers/RecipeRegisterDatabaseHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Repositories/EloquentRecipeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Repositories/EloquentRecipeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Utils/LaravelEventDispatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/LaravelEventDispatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Utils/LaravelTransactionBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/LaravelTransactionBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Utils/RamseyUuidFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/RamseyUuidFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Utils/Uuid.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/Uuid.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Recipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/migrations/2020_11_01_143323_add_recipes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/migrations/2020_11_01_143323_add_recipes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/Recipe/recipe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/Recipe/recipe.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeRegistererSpec.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeRegistererSpec.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeRetrieverSpec.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeRetrieverSpec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/nav/topNav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/nav/topNav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/style/style.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/style/style.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +215,7 @@
       <workItem from="1604240703719" duration="10761000" />
       <workItem from="1604256040273" duration="4074000" />
       <workItem from="1604311483749" duration="38000" />
-      <workItem from="1604605862254" duration="16230000" />
+      <workItem from="1604605862254" duration="16570000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1601132710652</created>
@@ -295,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604251456787</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add ingredients&#10;add some style">
+      <created>1604663342089</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604663342090</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +266,8 @@
     <MESSAGE value="Fix some composer issue &amp; add some requirement" />
     <MESSAGE value="add recipe retriever and registerer" />
     <MESSAGE value="add controllers and 1st view WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="add controllers and 1st view WIP" />
+    <MESSAGE value="add ingredients&#10;add some style" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ingredients&#10;add some style" />
   </component>
   <component name="WindowStateProjectService">
     <state x="755" y="392" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601133200294">
@@ -345,10 +303,11 @@
     </state>
     <state x="1458" y="598" width="586" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/72.27.3368.1413@72.27.3368.1413" timestamp="1604244905102" />
     <state x="1459" y="605" width="498" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/74.38.3366.1402@74.38.3366.1402" timestamp="1604608908700" />
-    <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2" timestamp="1604251456727">
-      <screen x="72" y="27" width="3368" height="1413" />
+    <state x="485" y="227" width="912" height="1034" key="CommitChangelistDialog2" timestamp="1604663342019">
+      <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2/72.27.3368.1413@72.27.3368.1413" timestamp="1604251456727" />
+    <state x="485" y="227" key="CommitChangelistDialog2/74.38.3366.1402@74.38.3366.1402" timestamp="1604663342019" />
     <state x="1022" y="633" width="281" height="203" key="Github.ShareDialog" timestamp="1601132756315">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
@@ -370,10 +329,11 @@
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
     <state x="652" y="366" width="1022" height="737" key="SettingsEditor/72.27.3368.1413@72.27.3368.1413" timestamp="1604311519561" />
-    <state x="539" y="463" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1604251458139">
-      <screen x="72" y="27" width="3368" height="1413" />
+    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1604663343274">
+      <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="539" y="463" width="800" height="543" key="Vcs.Push.Dialog.v2/72.27.3368.1413@72.27.3368.1413" timestamp="1604251458139" />
+    <state x="541" y="471" key="Vcs.Push.Dialog.v2/74.38.3366.1402@74.38.3366.1402" timestamp="1604663343274" />
     <state x="1565" y="578" width="362" height="278" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1604607588729">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
