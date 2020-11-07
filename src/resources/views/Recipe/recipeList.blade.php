@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <form action="/recipes">
                         <div class="form-row">
-                            <div class="col">
+                            <div class="col-md">
                                 <select class="form-control" id="preparationTime" name="preparationTime">
                                     <option value="">toutes</option>
                                     <option value="600">< 10 m</option>
@@ -17,7 +17,7 @@
                                     <option value="1800">< 30 m</option>
                                 </select>
                             </div>
-                            <div class="col">
+                            <div class="col-md">
                                 <button class="form-control pinkNav" type="submit">Rechercher</button>
                             </div>
                         </div>
@@ -27,20 +27,17 @@
         </div>
     </div>
 
-    <br>
-
     <div class="row">
         @foreach($recipes as $recipe)
             <div class="col-md-4">
-                <div class="card">
+                <a href="{{$recipe->getUrl()}}" class="card">
                     <div class="card-body">
                         <div class="card-title">
                             {{$recipe->getName()}}
                         </div>
-                        <h6 class="card-subtitle mb-2 text-muted">{{$recipe->getPreparationTime()}}</h6>
-                        <a href="{{$recipe->getUrl()}}" class="card-link">Voir la recette</a>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="far fa-clock" ></i> {{$recipe->getPreparationTime()}}</h6>
                     </div>
-                </div>
+                </a>
             </div>
         @endforeach
     </div>

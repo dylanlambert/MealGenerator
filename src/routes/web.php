@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@get');
+Route::get('/import', 'ImportController@import');
 Route::get('/recipes', 'RecipeController@getList');
 Route::post('/recipe', 'RecipeController@register');
 Route::get('/recipe/{recipeId}', 'RecipeController@get');
+Route::get('/generator', 'GeneratorController@generate');

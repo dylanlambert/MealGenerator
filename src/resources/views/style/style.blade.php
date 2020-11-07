@@ -7,13 +7,27 @@
         margin-top: 65px;
     }
 
+    .col{
+        margin-bottom: 15px;
+    }
+
     .pinkNav {
         background-color: #e64980;
         color: #FFF;
     }
 
+    a.card {
+        margin-bottom: 15px;
+        color: inherit;
+    }
+
     .navbar-brand {
         font-size: 1.8em;
+    }
+
+    .lightPinkBg{
+        background-color: #f783ac;
+        color: #FFF;
     }
 
     .recipeTitle {

@@ -43,4 +43,11 @@ final class RecipeList
     {
         return count($this->recipes) <= 0;
     }
+
+    public function rand(int $number):self
+    {
+        $recipes = $this->recipes;
+        shuffle($recipes);
+        return new self(... array_slice($recipes, 0, $number));
+    }
 }
