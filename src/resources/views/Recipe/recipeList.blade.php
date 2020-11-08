@@ -35,7 +35,7 @@
                         <div class="card-title">
                             {{$recipe->getName()}}
                         </div>
-                        <h6 class="card-subtitle mb-2 text-muted"><i class="far fa-clock" ></i> {{$recipe->getPreparationTime()}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="far fa-clock" ></i> {{$recipe->getPreparationTime()->getFormattedPreparationTime()}}</h6>
                     </div>
                 </a>
             </div>

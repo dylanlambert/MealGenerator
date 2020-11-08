@@ -6,6 +6,7 @@
         <div class="col">
             <h1 class="recipeTitle">
                 <i class="far fa-folder-open"></i> {{$recipe->getName()}}
+                <a href="/recipe/update/{{$recipe->getId()}}" style="float: right; color: #FFF"><i class="far fa-edit"></i></a>
             </h1>
         </div>
     </div>
@@ -14,7 +15,7 @@
         <div class="col-md-4">
             <ul class="list-group">
                 <li class="list-group-item prepTime amber">
-                    <i class="far fa-clock" ></i> {{$recipe->getPreparationTime()}}
+                    <i class="far fa-clock" ></i> {{$recipe->getPreparationTime()->getFormattedPreparationTime()}}
                 </li>
                 @foreach($recipe->getIngredients() as $ingredient)
                     <li class="list-group-item">

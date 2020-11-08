@@ -30,6 +30,8 @@ final class RecipeIngredient extends Model
 {
     use HasUuidPrimeryKey;
 
+    public $timestamps = false;
+
     public function ingredient():BelongsTo
     {
         return $this->belongsTo(Ingredient::class);

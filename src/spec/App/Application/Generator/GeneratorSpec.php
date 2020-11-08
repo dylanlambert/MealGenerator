@@ -5,7 +5,7 @@ namespace spec\App\Application\Generator;
 use App\Application\Generator\Generator;
 use App\Application\Generator\GeneratorRequest;
 use App\Application\Recipe\Dto\RecipeDto;
-use App\Domain\Entities\MeasuredIngredientList;
+use App\Domain\Entities\QuantifiedIngredientList;
 use App\Domain\Entities\Recipe;
 use App\Domain\Entities\RecipeList;
 use App\Domain\Repositories\RecipeRepository;
@@ -29,25 +29,25 @@ class GeneratorSpec extends ObjectBehavior
                 new StringId('recipe-1'),
                 'Recette 1',
                 new PreparationTime(600),
-                new MeasuredIngredientList(),
+                new QuantifiedIngredientList(),
             ),
             new Recipe(
                 new StringId('recipe-2'),
                 'Recette 2',
                 new PreparationTime(600),
-                new MeasuredIngredientList(),
+                new QuantifiedIngredientList(),
             ),
             new Recipe(
                 new StringId('recipe-3'),
                 'Recette 3',
                 new PreparationTime(600),
-                new MeasuredIngredientList(),
+                new QuantifiedIngredientList(),
             ),
             new Recipe(
                 new StringId('recipe-4'),
                 'Recette 4',
                 new PreparationTime(3600),
-                new MeasuredIngredientList(),
+                new QuantifiedIngredientList(),
             ),
         );
 
@@ -55,14 +55,16 @@ class GeneratorSpec extends ObjectBehavior
 
         $recipes = [
             new RecipeDto(
+                'recipe-1',
                 'Recette 1',
-                '10 minutes',
+                new PreparationTime(600),
                 [],
                 '/recipe/recipe-1'
             ),
             new RecipeDto(
+                'recipe-2',
                 'Recette 2',
-                '10 minutes',
+                new PreparationTime(600),
                 [],
                 '/recipe/recipe-2'
             ),
@@ -80,52 +82,29 @@ class GeneratorSpec extends ObjectBehavior
                 new StringId('recipe-1'),
                 'Recette 1',
                 new PreparationTime(600),
-                new MeasuredIngredientList(),
+                new QuantifiedIngredientList(),
             ),
             new Recipe(
                 new StringId('recipe-2'),
                 'Recette 2',
                 new PreparationTime(600),
-                new MeasuredIngredientList(),
+                new QuantifiedIngredientList(),
             ),
             new Recipe(
                 new StringId('recipe-3'),
                 'Recette 3',
                 new PreparationTime(600),
-                new MeasuredIngredientList(),
+                new QuantifiedIngredientList(),
             ),
             new Recipe(
                 new StringId('recipe-4'),
                 'Recette 4',
                 new PreparationTime(3600),
-                new MeasuredIngredientList(),
+                new QuantifiedIngredientList(),
             ),
         );
 
         $recipeRepository->get()->shouldBeCalled()->willReturn($recipeList);
-
-//        $recipes = [
-//            new RecipeDto(
-//                'Recette 1',
-//                '10 minutes',
-//                [],
-//                '/recipe/recipe-1'
-//            ),
-//            new RecipeDto(
-//                'Recette 2',
-//                '10 minutes',
-//                [],
-//                '/recipe/recipe-2'
-//            ),
-//            new RecipeDto(
-//                'Recette 3',
-//                '10 minutes',
-//                [],
-//                '/recipe/recipe-3'
-//            ),
-//        ];
-
-        // TODO amélio le test pour vérifier le type et la préparation time
 
         $this->generate($request)->getRecipes()->shouldHaveCount(2);
     }

@@ -24,4 +24,9 @@ final class StringId implements Id
     {
         return new self($id);
     }
+
+    public function sameAs(Id $that): bool
+    {
+        return (string)$this === (string)$that;
+    }
 }

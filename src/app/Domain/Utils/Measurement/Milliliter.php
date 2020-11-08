@@ -15,8 +15,18 @@ final class Milliliter implements Measurement
         $this->quantity = $quantity;
     }
 
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
     public function getFormatedQuantity()
     {
         return $this->quantity / 10 . 'cl';
+    }
+
+    public function match(callable $ifUnit, callable $ifGramme, callable $ifMillimeter)
+    {
+        return $ifMillimeter();
     }
 }

@@ -6,7 +6,7 @@ namespace App\Domain\Repositories;
 
 use App\Domain\Entities\Ingredient;
 use App\Domain\Entities\IngredientList;
-use App\Domain\Entities\MeasuredIngredientList;
+use App\Domain\Entities\QuantifiedIngredientList;
 use App\Domain\Utils\Id\Id;
 
 interface IngredientRepository
@@ -15,5 +15,5 @@ interface IngredientRepository
 
     public function get():IngredientList;
 
-    public function getByRecipe(Id $recipeId):MeasuredIngredientList;
+    public function getByIds(array $ids): IngredientList;
 }

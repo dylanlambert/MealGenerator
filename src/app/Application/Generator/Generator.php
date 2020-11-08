@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Application\Generator;
 
-use App\Application\Recipe\Dto\IngredientDto;
+use App\Application\Recipe\Dto\QuantifiedIngredientDto;
 use App\Application\Recipe\Dto\RecipeDto;
-use App\Domain\Entities\MeasuredIngredient;
+use App\Domain\Entities\QuantifiedIngredient;
 use App\Domain\Entities\Recipe;
 use App\Domain\Repositories\RecipeRepository;
 use App\Domain\Utils\PreparationTime\PreparationTime;
@@ -30,12 +30,15 @@ final class Generator
 
         $recipesDto = $recipes->map(
             fn(Recipe $recipe) => new RecipeDto(
+                (string) $recipe->getId(),
                 $recipe->getName(),
-                $recipe->getPreparationTime()->getFormattedPreparationTime(),
+                $recipe->getPreparationTime(),
                 $recipe->getMeasuredIngredients()->map(
-                    fn(MeasuredIngredient $ingredient) => new IngredientDto(
+                    fn(QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
+                        (string) $ingredient->getIngredient()->getId(),
                         $ingredient->getIngredient()->getName(),
                         $ingredient->getQuantity()->getFormatedQuantity(),
+                        $ingredient->getQuantity()->getQuantity(),
                     ),
                 ),
                 sprintf('/recipe/%s', $recipe->getId()),

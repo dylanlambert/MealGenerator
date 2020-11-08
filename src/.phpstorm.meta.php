@@ -11,6 +11,7 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -179,6 +180,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -347,6 +349,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -515,6 +518,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -683,6 +687,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -851,6 +856,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::get(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -1019,6 +1025,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::make(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -1187,6 +1194,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -1355,6 +1363,7 @@ namespace PHPSTORM_META {
         ]));
     override(\app(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -1523,6 +1532,7 @@ namespace PHPSTORM_META {
         ]));
     override(\resolve(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,
@@ -1691,6 +1701,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
+            'App\Domain\Repositories\IngredientRepository' => \App\Infrastructure\Repositories\EloquentIngredientRepository::class,
             'App\Domain\Repositories\RecipeRepository' => \App\Infrastructure\Repositories\EloquentRecipeRepository::class,
             'App\Domain\Utils\Application\CommandBus' => \App\Infrastructure\Utils\LaravelEventDispatcher::class,
             'App\Domain\Utils\Application\TransactionBroker' => \App\Infrastructure\Utils\LaravelTransactionBroker::class,

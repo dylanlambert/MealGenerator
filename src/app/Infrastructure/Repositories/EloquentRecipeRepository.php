@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Infrastructure\Repositories;
 
 use App\Domain\Entities\Ingredient;
-use App\Domain\Entities\MeasuredIngredient;
-use App\Domain\Entities\MeasuredIngredientList;
+use App\Domain\Entities\QuantifiedIngredient;
+use App\Domain\Entities\QuantifiedIngredientList;
 use App\Domain\Entities\Recipe;
 use App\Domain\Entities\RecipeList;
 use App\Domain\Exceptions\NotFoundException;
@@ -56,7 +56,7 @@ final class EloquentRecipeRepository implements RecipeRepository
 
     private function measuredIngredientListFromRecipeModel(RecipeModel $model)
     {
-        return new MeasuredIngredientList(
+        return new QuantifiedIngredientList(
             ... $model->recipeIngredient->map(
             function (RecipeIngredient $recipeIngredient) {
 
@@ -67,14 +67,14 @@ final class EloquentRecipeRepository implements RecipeRepository
                     case 'gramme' :
                         $measurement = new Gramme($recipeIngredient->quantity);
                         break;
-                    case 'milliliter' :
+                    case 'millimeter' :
                         $measurement = new Milliliter($recipeIngredient->quantity);
                         break;
                     default :
                         throw new \Exception('should not happened');
                 }
 
-                return new MeasuredIngredient(
+                return new QuantifiedIngredient(
                     $measurement,
                     new Ingredient(
                         Uuid::fromString($recipeIngredient->ingredient->id),

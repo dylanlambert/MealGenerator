@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Application\Recipe;
 
-use App\Application\Recipe\Dto\IngredientDto;
+use App\Application\Recipe\Dto\QuantifiedIngredientDto;
 use App\Application\Recipe\Dto\RecipeDto;
-use App\Domain\Entities\MeasuredIngredient;
+use App\Domain\Entities\QuantifiedIngredient;
 use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\RecipeRepository;
 
@@ -24,14 +24,16 @@ final class RecipeRetriever
         try {
             $recipe = $this->recipeRepository->find($request->getId());
 
-            $preparationTime = $recipe->getPreparationTime()->getFormattedPreparationTime();
             $recipeDto = new RecipeDto(
+                (string) $recipe->getId(),
                 $recipe->getName(),
-                $preparationTime,
+                $recipe->getPreparationTime(),
                 $recipe->getMeasuredIngredients()->map(
-                    fn(MeasuredIngredient $ingredient) => new IngredientDto(
+                    fn(QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
+                        (string) $ingredient->getIngredient()->getId(),
                         $ingredient->getIngredient()->getName(),
-                        $ingredient->getQuantity()->getFormatedQuantity()
+                        $ingredient->getQuantity()->getFormatedQuantity(),
+                        $ingredient->getQuantity()->getQuantity(),
                     )
                 ),
                 sprintf('/recipe/%s', $recipe->getId()),

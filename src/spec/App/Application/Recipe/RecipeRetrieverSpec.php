@@ -2,12 +2,12 @@
 
 namespace spec\App\Application\Recipe;
 
-use App\Application\Recipe\Dto\IngredientDto;
+use App\Application\Recipe\Dto\QuantifiedIngredientDto;
 use App\Application\Recipe\Dto\RecipeDto;
 use App\Application\Recipe\RecipeRetrieverRequest;
 use App\Domain\Entities\Ingredient;
-use App\Domain\Entities\MeasuredIngredient;
-use App\Domain\Entities\MeasuredIngredientList;
+use App\Domain\Entities\QuantifiedIngredient;
+use App\Domain\Entities\QuantifiedIngredientList;
 use App\Domain\Entities\Recipe;
 use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\RecipeRepository;
@@ -29,13 +29,13 @@ class RecipeRetrieverSpec extends ObjectBehavior
     {
         $request = new RecipeRetrieverRequest(new StringId('recipe-id'));
 
-        $measuredIngredients = new MeasuredIngredientList(
+        $measuredIngredients = new QuantifiedIngredientList(
             ...[
-                new MeasuredIngredient(
+                new QuantifiedIngredient(
                     new Gramme(100),
                     new Ingredient(new StringId('ingredient-id-1'), 'Fromage')
                 ),
-                new MeasuredIngredient(
+                new QuantifiedIngredient(
                     new Milliliter(200),
                     new Ingredient(new StringId('ingredient-id-2'), 'Crème')
                 ),
@@ -51,11 +51,12 @@ class RecipeRetrieverSpec extends ObjectBehavior
         $recipeRepository->find($request->getId())->shouldBeCalled()->willReturn($recipeEntity);
 
         $recipeDto = new RecipeDto(
+            'recipe-id',
             'Recipe Name',
-            '10 minutes',
+            new PreparationTime(600),
             [
-                new IngredientDto('Fromage', '100g'),
-                new IngredientDto('Crème', '20cl'),
+                new QuantifiedIngredientDto('ingredient-id-1', 'Fromage', '100g', 100),
+                new QuantifiedIngredientDto('ingredient-id-2', 'Crème', '20cl', 200),
             ],
             '/recipe/recipe-id',
         );

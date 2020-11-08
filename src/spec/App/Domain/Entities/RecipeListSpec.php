@@ -3,8 +3,8 @@
 namespace spec\App\Domain\Entities;
 
 use App\Domain\Entities\Ingredient;
-use App\Domain\Entities\MeasuredIngredient;
-use App\Domain\Entities\MeasuredIngredientList;
+use App\Domain\Entities\QuantifiedIngredient;
+use App\Domain\Entities\QuantifiedIngredientList;
 use App\Domain\Entities\Recipe;
 use App\Domain\Entities\RecipeList;
 use App\Domain\Utils\Id\StringId;
@@ -21,13 +21,13 @@ class RecipeListSpec extends ObjectBehavior
                 new StringId('recipe-id-1'),
                 'Recipe 1',
                 new PreparationTime(600),
-                new MeasuredIngredientList(
+                new QuantifiedIngredientList(
                 ...[
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
@@ -38,13 +38,13 @@ class RecipeListSpec extends ObjectBehavior
                 new StringId('recipe-id-2'),
                 'Recipe 2',
                 new PreparationTime(3600),
-                new MeasuredIngredientList(
+                new QuantifiedIngredientList(
                 ...[
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
@@ -58,13 +58,13 @@ class RecipeListSpec extends ObjectBehavior
                 new StringId('recipe-id-1'),
                 'Recipe 1',
                 new PreparationTime(600),
-                new MeasuredIngredientList(
+                new QuantifiedIngredientList(
                 ...[
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
@@ -83,13 +83,13 @@ class RecipeListSpec extends ObjectBehavior
                 new StringId('recipe-id-1'),
                 'Recipe 1',
                 new PreparationTime(600),
-                new MeasuredIngredientList(
+                new QuantifiedIngredientList(
                 ...[
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
@@ -100,13 +100,13 @@ class RecipeListSpec extends ObjectBehavior
                 new StringId('recipe-id-2'),
                 'Recipe 2',
                 new PreparationTime(3600),
-                new MeasuredIngredientList(
+                new QuantifiedIngredientList(
                 ...[
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
-                    new MeasuredIngredient(
+                    new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),

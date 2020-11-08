@@ -18,4 +18,6 @@ Route::get('/import', 'ImportController@import');
 Route::get('/recipes', 'RecipeController@getList');
 Route::post('/recipe', 'RecipeController@register');
 Route::get('/recipe/{recipeId}', 'RecipeController@get');
+Route::get('/recipe/update/{recipeId}', 'RecipeController@updateGet');
+Route::post('/recipe/update/{recipeId}', 'RecipeController@updatePost');
 Route::get('/generator', 'GeneratorController@generate');

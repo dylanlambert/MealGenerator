@@ -18,6 +18,11 @@ final class PreparationTime
         return $this->time / 60 . ' minutes';
     }
 
+    public function getSeconds():int
+    {
+        return $this->time;
+    }
+
     public function under(self $that): bool
     {
         return  $this->time <= $that->time;

@@ -6,7 +6,7 @@ namespace App\Domain\Entities;
 
 use App\Domain\Utils\Measurement\Measurement;
 
-final class MeasuredIngredient
+final class QuantifiedIngredient
 {
     private Measurement $quantity;
     private Ingredient $ingredient;

@@ -15,8 +15,18 @@ final class Unit implements Measurement
         $this->quantity = $quantity;
     }
 
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
     public function getFormatedQuantity()
     {
-        // TODO: Implement getFormatedQuantity() method.
+        return $this->quantity . '';
+    }
+
+    public function match(callable $ifUnit, callable $ifGramme, callable $ifMillimeter)
+    {
+        return $ifUnit();
     }
 }

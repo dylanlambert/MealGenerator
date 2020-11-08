@@ -13,7 +13,6 @@
 
     .pinkNav {
         background-color: #e64980;
-        color: #FFF;
     }
 
     a.card {
@@ -51,6 +50,9 @@
     .search {
         background-color: #f783ac;
         border: none;
-        border-radius: ;
+    }
+
+    .greenBg {
+        background-color: #00E676;
     }
 </style>

@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe wherePreparationTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $process
+ * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereProcess($value)
  */
 class Recipe extends Model
 {

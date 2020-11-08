@@ -6,11 +6,13 @@ namespace App\Infrastructure\Repositories;
 
 use App\Domain\Entities\Ingredient;
 use App\Domain\Entities\IngredientList;
-use App\Domain\Entities\MeasuredIngredientList;
+use App\Domain\Entities\QuantifiedIngredientList;
 use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\IngredientRepository;
 use App\Domain\Utils\Id\Id;
+use App\Infrastructure\Utils\Uuid;
 use App\Ingredient as IngredientModel;
+use Illuminate\Database\Eloquent\Collection;
 
 final class EloquentIngredientRepository implements IngredientRepository
 {
@@ -33,18 +35,30 @@ final class EloquentIngredientRepository implements IngredientRepository
     {
         $collection = IngredientModel::all();
         /** @var Ingredient $ingredients */
-        $ingredients = $collection->map(function (IngredientModel $ingredient) {
-            new Ingredient(
-                Id::fromString($ingredient->id),
+        $ingredients = $this->constructFromCollection($collection);
+
+        return new IngredientList(...$ingredients);
+    }
+
+    public function getByIds(array $ids): IngredientList
+    {
+        $ids = array_map(fn(Id $id) => (string) $id, $ids);
+        $collection = IngredientModel::find($ids);
+        $ingredients = $this->constructFromCollection($collection);
+        return new IngredientList(...$ingredients);
+    }
+
+    /**
+     * @param Collection $collection
+     * @return mixed
+     */
+    private function constructFromCollection(Collection $collection)
+    {
+        return $collection->map(function (IngredientModel $ingredient) {
+            return new Ingredient(
+                Uuid::fromString($ingredient->id),
                 $ingredient->name,
             );
         });
-
-        return new IngredientList($ingredients);
-    }
-
-    public function getByRecipe(Id $recipeId): MeasuredIngredientList
-    {
-        // TODO: Implement getByRecipe() method.
     }
 }

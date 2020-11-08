@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Ingredient\IngredientsRetriever;
 use App\Application\Recipe\RecipeRegisterer;
 use App\Application\Recipe\RecipeRegistererRequest;
 use App\Application\Recipe\RecipeRetriever;
 use App\Application\Recipe\RecipeRetrieverRequest;
+use App\Application\Recipe\RecipeUpdater;
+use App\Application\Recipe\RecipeUpdaterRequest;
 use App\Application\Recipes\RecipesRetriever;
 use App\Application\Recipes\RecipesRetrieverRequest;
 use App\Domain\Utils\Id\StringId;
@@ -37,9 +40,41 @@ class RecipeController extends Controller
         $applicationResponse = $recipesRetriever->retrieve($applicationRequest);
 
         if($applicationResponse->getRecipes() === null) {
-            return response()->json([], 400);
+            response('', 400);
         }
 
         return view('Recipe.recipeList', ['recipes' => $applicationResponse->getRecipes()]);
+    }
+
+    public function updateGet(Request $request, RecipeRetriever $recipeRetriever, IngredientsRetriever $ingredientsRetriever)
+    {
+        $applicationRequest = new RecipeRetrieverRequest(new StringId($request['recipeId']));
+        $applicationResponse = $recipeRetriever->retrieve($applicationRequest);
+        if($applicationResponse->getRecipe() === null) {
+            return response()->json([], 400);
+        }
+
+        $ingredients = $ingredientsRetriever->retrieve()->getIngredients();
+
+        return view('Recipe.update', ['recipe' => $applicationResponse->getRecipe(), 'ingredients' => $ingredients]);
+    }
+
+    public function updatePost(Request $request, RecipeUpdater $updater)
+    {
+        $applicationRequest = new RecipeUpdaterRequest(
+            $request['recipeId'],
+            $request['name'],
+            $request['ingredient'],
+            $request['preparationTime'],
+            $request['recipe'],
+        );
+
+        $applicationResponse = $updater->update($applicationRequest);
+
+        if(!$applicationResponse->isRegistered()) {
+            response('', 400);
+        }
+        $url = '/recipe/' . $request['recipeId'];
+        redirect()->to($url)->send();
     }
 }
