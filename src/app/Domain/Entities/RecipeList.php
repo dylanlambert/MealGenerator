@@ -50,4 +50,19 @@ final class RecipeList
         shuffle($recipes);
         return new self(... array_slice($recipes, 0, $number));
     }
+
+    public function getIngredientsCombined(): QuantifiedIngredientList
+    {
+        $quantifiedIngredients =  array_map(
+            function (Recipe $recipe) {
+                $list = $recipe->getMeasuredIngredients()->map(
+                    fn(QuantifiedIngredient $ingredient)=>$ingredient
+                );
+                return [...$list];
+            }, $this->recipes);
+
+        $ingredients = new QuantifiedIngredientList(... array_merge([], ...$quantifiedIngredients));
+
+        return $ingredients;
+    }
 }

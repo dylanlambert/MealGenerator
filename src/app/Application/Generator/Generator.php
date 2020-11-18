@@ -50,6 +50,21 @@ final class Generator
                 $recipe->getRecipe(),
             )
         );
-        return new GeneratorResponse($recipesDto);
+
+        $ingredientsDto = $recipes->getIngredientsCombined()->map(
+            fn(QuantifiedIngredient $quantifiedIngredient) => new QuantifiedIngredientDto(
+                (string) $quantifiedIngredient->getIngredient()->getId(),
+                $quantifiedIngredient->getIngredient()->getName(),
+                $quantifiedIngredient->getQuantity()->getFormatedQuantity(),
+                $quantifiedIngredient->getQuantity()->getQuantity(),
+                $quantifiedIngredient->getQuantity()->match(
+                    fn()=>'unit',
+                    fn()=>'gramme',
+                    fn()=>'milliliter',
+                )
+            )
+        );
+
+        return new GeneratorResponse($recipesDto, $ingredientsDto);
     }
 }

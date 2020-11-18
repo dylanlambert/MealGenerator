@@ -5,14 +5,16 @@
         <div class="col-md-4">
             <h2>Liste des courses</h2>
             <ul class="list-group">
-                <li class="list-group-item">
-                    <div>
-                        ingrédient 1
-                        <span style="float: right">
-                            150g
+                @foreach($ingredients as $ingredient)
+                    <li class="list-group-item">
+                        <div>
+                            {{$ingredient->getName()}}
+                            <span style="float: right">
+                            {{$ingredient->getQuantity()}}
                         </span>
-                    </div>
-                </li>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
         </div>
 
@@ -26,7 +28,9 @@
                                 <div class="card-title">
                                     {{$recipe->getName()}}
                                 </div>
-                                <h6 class="card-subtitle mb-2 text-muted"><i class="far fa-clock" ></i> {{$recipe->getPreparationTime()->getFormattedPreparationTime()}}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted"><i
+                                        class="far fa-clock"></i> {{$recipe->getPreparationTime()->getFormattedPreparationTime()}}
+                                </h6>
                             </div>
                         </a>
                     </div>

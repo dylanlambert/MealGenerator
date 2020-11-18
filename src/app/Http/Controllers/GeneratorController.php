@@ -19,6 +19,6 @@ final class GeneratorController extends Controller
 
         $applicationResponse = $generator->generate($applicationRequest);
 
-        return view('Generator.view', ['recipes' => $applicationResponse->getRecipes()]);
+        return view('Generator.view', ['recipes' => $applicationResponse->getRecipes(), 'ingredients' => $applicationResponse->getIngredients()]);
     }
 }

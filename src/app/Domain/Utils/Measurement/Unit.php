@@ -29,4 +29,9 @@ final class Unit implements Measurement
     {
         return $ifUnit();
     }
+
+    public function addQuantity(int $qtyToAdd): self
+    {
+        return new self($this->getQuantity() + $qtyToAdd);
+    }
 }

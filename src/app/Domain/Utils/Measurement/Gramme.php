@@ -29,4 +29,9 @@ final class Gramme implements Measurement
     {
         return $ifGramme();
     }
+
+    public function addQuantity(int $qtyToAdd): self
+    {
+        return new self($this->getQuantity() + $qtyToAdd);
+    }
 }

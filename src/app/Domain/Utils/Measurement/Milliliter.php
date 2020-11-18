@@ -29,4 +29,9 @@ final class Milliliter implements Measurement
     {
         return $ifMillimeter();
     }
+
+    public function addQuantity(int $qtyToAdd): self
+    {
+        return new self($this->getQuantity() + $qtyToAdd);
+    }
 }

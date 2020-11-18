@@ -11,4 +11,6 @@ interface Measurement
     public function match(callable $ifUnit, callable $ifGramme, callable $ifMillimeter);
 
     public function getQuantity(): int;
+
+    public function addQuantity(int $qtyToAdd):self;
 }
