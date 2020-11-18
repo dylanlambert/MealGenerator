@@ -32,7 +32,8 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            )
+            ),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-id-2'),
@@ -49,7 +50,8 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            )
+            ),
+                'process',
             ),
         );
 
@@ -69,7 +71,8 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            )
+            ),
+                'process',
             ),
         );
 
@@ -94,7 +97,8 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            )
+            ),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-id-2'),
@@ -111,7 +115,8 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            )
+            ),
+                'process',
             ),
         );
 

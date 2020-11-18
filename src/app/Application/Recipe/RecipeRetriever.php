@@ -34,9 +34,15 @@ final class RecipeRetriever
                         $ingredient->getIngredient()->getName(),
                         $ingredient->getQuantity()->getFormatedQuantity(),
                         $ingredient->getQuantity()->getQuantity(),
+                        $ingredient->getQuantity()->match(
+                            fn()=>'unit',
+                            fn()=>'gramme',
+                            fn()=>'milliliter',
+                        )
                     )
                 ),
                 sprintf('/recipe/%s', $recipe->getId()),
+                $recipe->getRecipe(),
             );
 
             return new RecipeRetrieverResponse($recipeDto);

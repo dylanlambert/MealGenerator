@@ -45,7 +45,8 @@ class RecipeRetrieverSpec extends ObjectBehavior
             $request->getId(),
             'Recipe Name',
             new PreparationTime(600),
-            $measuredIngredients
+            $measuredIngredients,
+            'process',
         );
 
         $recipeRepository->find($request->getId())->shouldBeCalled()->willReturn($recipeEntity);
@@ -55,10 +56,11 @@ class RecipeRetrieverSpec extends ObjectBehavior
             'Recipe Name',
             new PreparationTime(600),
             [
-                new QuantifiedIngredientDto('ingredient-id-1', 'Fromage', '100g', 100),
-                new QuantifiedIngredientDto('ingredient-id-2', 'Crème', '20cl', 200),
+                new QuantifiedIngredientDto('ingredient-id-1', 'Fromage', '100g', 100, 'gramme'),
+                new QuantifiedIngredientDto('ingredient-id-2', 'Crème', '20cl', 200, 'milliliter'),
             ],
             '/recipe/recipe-id',
+            'process',
         );
 
         $this->retrieve($request)->getRecipe()->shouldBeLike($recipeDto);

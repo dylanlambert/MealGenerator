@@ -1,60 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc6c4d28-5c9f-4f21-a4d2-fe0d13f4a9e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Ingredient/Dto/IngredientDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Ingredient/IngredientsRetriever.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Ingredient/IngredientsRetrieverResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeUpdater.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeUpdaterRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeUpdaterResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Console/Commands/GetIngredients.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Console/Commands/InsertIngredients.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Commands/UpdateRecipe.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Handlers/UpdateRecipeDatabaseHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/migrations/2020_11_07_200344_add_recipe_to_recipes.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/views/Recipe/update.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/views/style/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spec/App/Application/Ingredient/IngredientsRetrieverSpec.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeUpdaterSpec.php" afterDir="false" />
+    <list default="true" id="cc6c4d28-5c9f-4f21-a4d2-fe0d13f4a9e2" name="Default Changelist" comment="WIP il est tard j'ai la flem et en plus l'implémentation est merdique">
+      <change afterPath="$PROJECT_DIR$/src/app/Http/Controllers/TestController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/views/React/test.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/.phpstorm.meta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/src/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Application/Generator/Generator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Generator/Generator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/IngredientDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/QuantifiedIngredientDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/QuantifiedIngredientDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/QuantifiedIngredientDto.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/RecipeDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/Dto/RecipeDto.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeRetriever.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeRetriever.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeUpdater.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipe/RecipeUpdater.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Application/Recipes/RecipesRetriever.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Recipes/RecipesRetriever.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Entities/IngredientList.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Entities/IngredientList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Entities/MeasuredIngredient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Entities/QuantifiedIngredient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Entities/MeasuredIngredientList.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Entities/QuantifiedIngredientList.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Domain/Entities/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Entities/Recipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Repositories/IngredientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Repositories/IngredientRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/Id/Id.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Id/Id.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/Id/StringId.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Id/StringId.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Gramme.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Gramme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Measurement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Measurement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Milliliter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Milliliter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Unit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/Measurement/Unit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Domain/Utils/PreparationTime/PreparationTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Domain/Utils/PreparationTime/PreparationTime.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/RecipeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/RecipeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Repositories/EloquentIngredientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Repositories/EloquentIngredientRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Repositories/EloquentRecipeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Repositories/EloquentRecipeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Infrastructure/Utils/Uuid.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Infrastructure/Utils/Uuid.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Recipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/RecipeIngredient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/RecipeIngredient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/Generator/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/Generator/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/views/Recipe/recipe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/Recipe/recipe.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/Recipe/recipeList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/Recipe/recipeList.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/Recipe/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/Recipe/update.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/style/style.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/style/style.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/style/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/style/js.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spec/App/Application/Generator/GeneratorSpec.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/spec/App/Application/Generator/GeneratorSpec.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeRetrieverSpec.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeRetrieverSpec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeUpdaterSpec.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeUpdaterSpec.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spec/App/Application/Recipes/RecipesRetrieverSpec.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/spec/App/Application/Recipes/RecipesRetrieverSpec.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spec/App/Domain/Entities/RecipeListSpec.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/spec/App/Domain/Entities/RecipeListSpec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +60,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="server">
     <include_path>
       <path value="$PROJECT_DIR$/src/vendor/composer" />
       <path value="$PROJECT_DIR$/src/vendor/psr/simple-cache" />
@@ -221,25 +219,29 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/public" />
+      <recent name="$PROJECT_DIR$/src/app" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/resources/views/Recipe" />
       <recent name="$PROJECT_DIR$/src/public" />
       <recent name="$PROJECT_DIR$/src/storage/app/public" />
       <recent name="$PROJECT_DIR$" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/public" />
-      <recent name="$PROJECT_DIR$/src/app" />
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
   </component>
-  <component name="RunManager" selected="PHPSpec.RecipeListSpec.php::it_filters_under_preaparation_time_givent">
+  <component name="RunManager" selected="PHPSpec.RecipeUpdaterSpec.php::it_update">
     <configuration name="RecipeListSpec.php::it_filters_under_preaparation_time_givent" type="PhpSpecConfigurationType" factoryName="PHPSpec" temporary="true">
       <PhpTestRunnerSettings file="$PROJECT_DIR$/src/spec/App/Domain/Entities/RecipeListSpec.php" method="it_filters_under_preaparation_time_givent" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RecipeUpdaterSpec.php::it_update" type="PhpSpecConfigurationType" factoryName="PHPSpec" temporary="true">
+      <PhpTestRunnerSettings file="$PROJECT_DIR$/src/spec/App/Application/Recipe/RecipeUpdaterSpec.php" method="it_update" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -252,6 +254,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPSpec.RecipeUpdaterSpec.php::it_update" />
         <item itemvalue="PHPSpec.RecipeListSpec.php::it_filters_under_preaparation_time_givent" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
@@ -275,7 +278,14 @@
       <workItem from="1604752979242" duration="7075000" />
       <workItem from="1604761130558" duration="7408000" />
       <workItem from="1604769030052" duration="9023000" />
-      <workItem from="1604779307892" duration="16334000" />
+      <workItem from="1604779307892" duration="31655000" />
+      <workItem from="1604912874406" duration="7000" />
+      <workItem from="1605180999417" duration="845000" />
+      <workItem from="1605202965570" duration="970000" />
+      <workItem from="1605254212740" duration="1266000" />
+      <workItem from="1605345540624" duration="766000" />
+      <workItem from="1605690135556" duration="683000" />
+      <workItem from="1605690879938" duration="3480000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1601132710652</created>
@@ -333,11 +343,30 @@
       <option name="project" value="LOCAL" />
       <updated>1604761731389</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="WIP il est tard j'ai la flem et en plus l'implémentation est merdique">
+      <created>1604796879935</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1604796879935</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -351,28 +380,37 @@
     <MESSAGE value="adapt style" />
     <MESSAGE value="add search front" />
     <MESSAGE value="Add generator Logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add generator Logic" />
+    <MESSAGE value="WIP il est tard j'ai la flem et en plus l'implémentation est merdique" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP il est tard j'ai la flem et en plus l'implémentation est merdique" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1379" y="279" width="675" height="902" key="#PHP" timestamp="1604786136891">
+    <state x="1300" y="391" width="824" height="691" key="#CLI_Interpreters" timestamp="1605691505812">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
-    <state x="1379" y="279" width="675" height="902" key="#PHP/74.38.3366.1402@74.38.3366.1402" timestamp="1604786136891" />
+    <state x="1300" y="391" width="824" height="691" key="#CLI_Interpreters/74.38.3366.1402@74.38.3366.1402" timestamp="1605691505812" />
+    <state x="1379" y="279" width="675" height="909" key="#PHP" timestamp="1605691339045">
+      <screen x="74" y="38" width="3366" height="1402" />
+    </state>
+    <state x="1379" y="279" width="675" height="909" key="#PHP/74.38.3366.1402@74.38.3366.1402" timestamp="1605691339045" />
     <state x="755" y="392" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601133200294">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
     <state x="755" y="392" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1601133200294" />
-    <state x="1542" y="413" width="419" height="646" key="#com.intellij.ide.util.MemberChooser" timestamp="1604790119986">
+    <state x="1542" y="413" width="419" height="646" key="#com.intellij.ide.util.MemberChooser" timestamp="1605693243072">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="1515" y="413" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/26.38.3414.1402@26.38.3414.1402" timestamp="1604756586831" />
     <state x="1541" y="405" width="419" height="671" key="#com.intellij.ide.util.MemberChooser/72.27.3368.1413@72.27.3368.1413" timestamp="1604259073358" />
-    <state x="1542" y="413" width="419" height="646" key="#com.intellij.ide.util.MemberChooser/74.38.3366.1402@74.38.3366.1402" timestamp="1604790119986" />
+    <state x="1542" y="413" width="419" height="646" key="#com.intellij.ide.util.MemberChooser/74.38.3366.1402@74.38.3366.1402" timestamp="1605693243072" />
     <state x="1498" y="484" width="512" height="834" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604779927008">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="1497" y="476" width="508" height="522" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1604259099533" />
     <state x="1498" y="484" width="512" height="834" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/74.38.3366.1402@74.38.3366.1402" timestamp="1604779927008" />
+    <state x="2331" y="488" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604848038630">
+      <screen x="74" y="38" width="3366" height="1402" />
+    </state>
+    <state x="2331" y="488" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/74.38.3366.1402@74.38.3366.1402" timestamp="1604848038630" />
     <state x="1490" y="498" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604773687050">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
@@ -392,56 +430,76 @@
     </state>
     <state x="1458" y="598" width="586" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/72.27.3368.1413@72.27.3368.1413" timestamp="1604244905102" />
     <state x="1459" y="605" width="498" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/74.38.3366.1402@74.38.3366.1402" timestamp="1604677883632" />
-    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2" timestamp="1604761730676">
+    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2" timestamp="1605516644022">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2/72.27.3368.1413@72.27.3368.1413" timestamp="1604251456727" />
-    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2/74.38.3366.1402@74.38.3366.1402" timestamp="1604761730676" />
+    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2/74.38.3366.1402@74.38.3366.1402" timestamp="1605516644022" />
     <state x="1022" y="633" width="281" height="203" key="Github.ShareDialog" timestamp="1601132756315">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
     <state x="1022" y="633" width="281" height="203" key="Github.ShareDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1601132756315" />
-    <state width="2355" height="415" key="GridCell.Tab.0.bottom" timestamp="1604792662072">
+    <state width="3320" height="393" key="GridCell.Tab.0.bottom" timestamp="1605691897488">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
-    <state width="2355" height="415" key="GridCell.Tab.0.bottom/74.38.3366.1402@74.38.3366.1402" timestamp="1604792662072" />
-    <state width="2355" height="415" key="GridCell.Tab.0.center" timestamp="1604792662072">
+    <state width="3320" height="393" key="GridCell.Tab.0.bottom/74.38.3366.1402@74.38.3366.1402" timestamp="1605691897488" />
+    <state width="3320" height="393" key="GridCell.Tab.0.center" timestamp="1605691897487">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
-    <state width="2355" height="415" key="GridCell.Tab.0.center/74.38.3366.1402@74.38.3366.1402" timestamp="1604792662072" />
-    <state width="2355" height="415" key="GridCell.Tab.0.left" timestamp="1604792662072">
+    <state width="3320" height="393" key="GridCell.Tab.0.center/74.38.3366.1402@74.38.3366.1402" timestamp="1605691897487" />
+    <state width="3320" height="393" key="GridCell.Tab.0.left" timestamp="1605691897486">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
-    <state width="2355" height="415" key="GridCell.Tab.0.left/74.38.3366.1402@74.38.3366.1402" timestamp="1604792662072" />
-    <state width="2355" height="415" key="GridCell.Tab.0.right" timestamp="1604792662072">
+    <state width="3320" height="393" key="GridCell.Tab.0.left/74.38.3366.1402@74.38.3366.1402" timestamp="1605691897486" />
+    <state width="3320" height="393" key="GridCell.Tab.0.right" timestamp="1605691897488">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
-    <state width="2355" height="415" key="GridCell.Tab.0.right/74.38.3366.1402@74.38.3366.1402" timestamp="1604792662072" />
+    <state width="3320" height="393" key="GridCell.Tab.0.right/74.38.3366.1402@74.38.3366.1402" timestamp="1605691897488" />
+    <state width="3320" height="393" key="GridCell.Tab.1.bottom" timestamp="1605691897491">
+      <screen x="74" y="38" width="3366" height="1402" />
+    </state>
+    <state width="3320" height="393" key="GridCell.Tab.1.bottom/74.38.3366.1402@74.38.3366.1402" timestamp="1605691897491" />
+    <state width="3320" height="393" key="GridCell.Tab.1.center" timestamp="1605691897489">
+      <screen x="74" y="38" width="3366" height="1402" />
+    </state>
+    <state width="3320" height="393" key="GridCell.Tab.1.center/74.38.3366.1402@74.38.3366.1402" timestamp="1605691897489" />
+    <state width="3320" height="393" key="GridCell.Tab.1.left" timestamp="1605691897489">
+      <screen x="74" y="38" width="3366" height="1402" />
+    </state>
+    <state width="3320" height="393" key="GridCell.Tab.1.left/74.38.3366.1402@74.38.3366.1402" timestamp="1605691897489" />
+    <state width="3320" height="393" key="GridCell.Tab.1.right" timestamp="1605691897490">
+      <screen x="74" y="38" width="3366" height="1402" />
+    </state>
+    <state width="3320" height="393" key="GridCell.Tab.1.right/74.38.3366.1402@74.38.3366.1402" timestamp="1605691897490" />
     <state width="263" height="541" key="HiddenNamespacesPopup" timestamp="1601133213839">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
     <state width="263" height="541" key="HiddenNamespacesPopup/72.27.3368.1413@72.27.3368.1413" timestamp="1601133213839" />
-    <state x="1412" y="445" width="695" height="607" key="NewPhpClassDialog" timestamp="1604784660042">
+    <state x="1412" y="445" width="695" height="607" key="NewPhpClassDialog" timestamp="1604847388119">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="1383" y="445" width="695" height="607" key="NewPhpClassDialog/26.38.3414.1402@26.38.3414.1402" timestamp="1604756554413" />
     <state x="1411" y="437" width="743" height="607" key="NewPhpClassDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1604258027041" />
-    <state x="1412" y="445" width="751" height="600" key="NewPhpClassDialog/74.38.3366.1402@74.38.3366.1402" timestamp="1604784660042" />
+    <state x="1412" y="445" width="751" height="600" key="NewPhpClassDialog/74.38.3366.1402@74.38.3366.1402" timestamp="1604847388119" />
     <state x="959" y="658" width="399" height="164" key="NewPhpFileDialog" timestamp="1604784689568">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="958" y="652" width="399" height="164" key="NewPhpFileDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1601128941749" />
     <state x="959" y="658" width="399" height="164" key="NewPhpFileDialog/74.38.3366.1402@74.38.3366.1402" timestamp="1604784689568" />
-    <state x="654" y="374" width="1022" height="737" key="SettingsEditor" timestamp="1604779372042">
+    <state x="654" y="374" width="1022" height="737" key="SettingsEditor" timestamp="1605691508373">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="652" y="366" width="1022" height="737" key="SettingsEditor/72.27.3368.1413@72.27.3368.1413" timestamp="1604311519561" />
-    <state x="654" y="374" width="1022" height="737" key="SettingsEditor/74.38.3366.1402@74.38.3366.1402" timestamp="1604779372042" />
-    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1604761732657">
+    <state x="654" y="374" width="1022" height="737" key="SettingsEditor/74.38.3366.1402@74.38.3366.1402" timestamp="1605691508373" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1605694066503">
+      <screen x="74" y="38" width="3366" height="1402" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/74.38.3366.1402@74.38.3366.1402" timestamp="1605694066503" />
+    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1604796881110">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="539" y="463" width="800" height="543" key="Vcs.Push.Dialog.v2/72.27.3368.1413@72.27.3368.1413" timestamp="1604251458139" />
-    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2/74.38.3366.1402@74.38.3366.1402" timestamp="1604761732657" />
+    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2/74.38.3366.1402@74.38.3366.1402" timestamp="1604796881110" />
     <state x="1565" y="578" width="362" height="278" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1604607588729">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
@@ -466,12 +524,12 @@
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="1384" y="326" key="run.anything.popup/74.38.3366.1402@74.38.3366.1402" timestamp="1604774219241" />
-    <state x="828" y="354" width="672" height="673" key="search.everywhere.popup" timestamp="1604796651432">
+    <state x="828" y="354" width="672" height="673" key="search.everywhere.popup" timestamp="1605693939030">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="791" y="354" width="682" height="673" key="search.everywhere.popup/26.38.3414.1402@26.38.3414.1402" timestamp="1604757118983" />
     <state x="826" y="345" width="672" height="678" key="search.everywhere.popup/72.27.3368.1413@72.27.3368.1413" timestamp="1604259405961" />
-    <state x="828" y="354" width="672" height="673" key="search.everywhere.popup/74.38.3366.1402@74.38.3366.1402" timestamp="1604796651432" />
+    <state x="828" y="354" width="672" height="673" key="search.everywhere.popup/74.38.3366.1402@74.38.3366.1402" timestamp="1605693939030" />
     <state x="807" y="650" width="537" height="187" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1601130378790">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>

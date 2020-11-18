@@ -1,4 +1,8 @@
 <script>
+    $(document).ready(function() {
+        $('.ingredients').select2();
+    });
+
     $(function () {
         $(document).on('click', '.btn-add', function (e) {
             e.preventDefault();
@@ -34,4 +38,11 @@
     function randomString(length) {
         return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
     }
+
+    tinymce.init({
+        selector: '#tiny',
+        height: 500,
+        menubar: false,
+        toolbar: "undo redo | styleselect | fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent",
+    });
 </script>

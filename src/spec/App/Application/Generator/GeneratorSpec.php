@@ -30,24 +30,28 @@ class GeneratorSpec extends ObjectBehavior
                 'Recette 1',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-2'),
                 'Recette 2',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-3'),
                 'Recette 3',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-4'),
                 'Recette 4',
                 new PreparationTime(3600),
                 new QuantifiedIngredientList(),
+                'process',
             ),
         );
 
@@ -59,14 +63,16 @@ class GeneratorSpec extends ObjectBehavior
                 'Recette 1',
                 new PreparationTime(600),
                 [],
-                '/recipe/recipe-1'
+                '/recipe/recipe-1',
+                'process',
             ),
             new RecipeDto(
                 'recipe-2',
                 'Recette 2',
                 new PreparationTime(600),
                 [],
-                '/recipe/recipe-2'
+                '/recipe/recipe-2',
+                'process',
             ),
         ];
 
@@ -83,24 +89,28 @@ class GeneratorSpec extends ObjectBehavior
                 'Recette 1',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-2'),
                 'Recette 2',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-3'),
                 'Recette 3',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-4'),
                 'Recette 4',
                 new PreparationTime(3600),
                 new QuantifiedIngredientList(),
+                'process',
             ),
         );
 

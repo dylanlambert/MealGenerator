@@ -35,21 +35,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2>Recette : </h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur cum debitis, error et
-                        ex fuga
-                        nihil nobis perspiciatis placeat quas qui quidem quo recusandae similique temporibus totam vel
-                        voluptates!
-                    </p>
-                    <p>Accusantium ad at aut, autem cumque deserunt dicta doloremque dolores, eius enim eos ex fugit
-                        labore
-                        libero magnam mollitia natus, non nostrum odit perspiciatis quae quam quos reprehenderit soluta
-                        voluptate!
-                    </p>
-                    <p>Debitis delectus deserunt eaque, eos facere fugit ipsum itaque magnam natus neque nihil odio
-                        praesentium qui sit tempore, vero voluptates voluptatibus! Aut, facere ipsa nemo odit officia
-                        quasi
-                        recusandae voluptatum.
-                    </p>
+                    {!! $recipe->getRecipe() !!}
                 </div>
             </div>
         </div>

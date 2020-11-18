@@ -5,6 +5,12 @@ EXEC_SERVER_IT = $(EXEC_COMPOSE_IT) server
 
 start:
 	docker-compose up --build --force-recreate --remove-orphans -d
+.PHONY: start
+
+stop:
+	docker-compose stop
+.PHONY: stop
+
 server-bash:
 	docker-compose exec server bash
 .PHONY: start server-bash

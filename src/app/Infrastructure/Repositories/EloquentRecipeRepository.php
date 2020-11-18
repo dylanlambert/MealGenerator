@@ -35,6 +35,7 @@ final class EloquentRecipeRepository implements RecipeRepository
             $model->name,
             new PreparationTime($model->preparation_time),
             $this->measuredIngredientListFromRecipeModel($model),
+            $model->process,
         );
     }
 
@@ -48,6 +49,7 @@ final class EloquentRecipeRepository implements RecipeRepository
                 $recipe->name,
                 new PreparationTime($recipe->preparation_time),
                 $this->measuredIngredientListFromRecipeModel($recipe),
+                $recipe->process,
             );
         });
 

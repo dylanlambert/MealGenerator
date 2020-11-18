@@ -33,7 +33,7 @@ final class EloquentIngredientRepository implements IngredientRepository
 
     public function get(): IngredientList
     {
-        $collection = IngredientModel::all();
+        $collection = IngredientModel::all()->sortBy('name');
         /** @var Ingredient $ingredients */
         $ingredients = $this->constructFromCollection($collection);
 

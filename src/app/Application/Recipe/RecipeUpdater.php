@@ -68,7 +68,7 @@ final class RecipeUpdater
             $request->getName(),
             new PreparationTime($request->getPreparationTime()),
             new QuantifiedIngredientList(...$measuredIngredient),
-            nl2br($request->getProcess()),
+            $request->getProcess(),
         );
 
         try {

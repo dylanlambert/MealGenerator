@@ -44,7 +44,8 @@ class RecipesRetrieverSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            )
+            ),
+                'process',
             ),
             new Recipe(
                 new StringId('recipe-id-2'),
@@ -61,7 +62,8 @@ class RecipesRetrieverSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            )
+            ),
+                'process',
             ),
         );
 
@@ -73,20 +75,22 @@ class RecipesRetrieverSpec extends ObjectBehavior
                 'Recipe 1',
                 new PreparationTime(600),
                 [
-                    new QuantifiedIngredientDto('ingredient-id', 'ingredientName', '100g', 100),
-                    new QuantifiedIngredientDto('ingredient-id', 'ingredientName', '100g', 100),
+                    new QuantifiedIngredientDto('ingredient-id', 'ingredientName', '100g', 100, 'gramme'),
+                    new QuantifiedIngredientDto('ingredient-id', 'ingredientName', '100g', 100, 'gramme'),
                 ],
                 '/recipe/recipe-id-1',
+                'process',
             ),
             new RecipeDto(
                 'recipe-id-2',
                 'Recipe 2',
                 new PreparationTime(3600),
                 [
-                    new QuantifiedIngredientDto('ingredient-id', 'ingredientName', '100g', 100),
-                    new QuantifiedIngredientDto('ingredient-id', 'ingredientName', '100g', 100),
+                    new QuantifiedIngredientDto('ingredient-id', 'ingredientName', '100g', 100, 'gramme'),
+                    new QuantifiedIngredientDto('ingredient-id', 'ingredientName', '100g', 100, 'gramme'),
                 ],
                 '/recipe/recipe-id-2',
+                'process',
             )
         ];
 
