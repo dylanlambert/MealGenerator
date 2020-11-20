@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Domain\Commands\RecipeRegistererCommand;
+use App\Domain\Commands\SaveHistoric;
 use App\Domain\Commands\UpdateRecipe;
 use App\Infrastructure\Handlers\RecipeRegisterDatabaseHandler;
+use App\Infrastructure\Handlers\SaveHistoricDatabaseHandler;
 use App\Infrastructure\Handlers\UpdateRecipeDatabaseHandler;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UpdateRecipe::class => [
             UpdateRecipeDatabaseHandler::class,
+        ],
+        SaveHistoric::class => [
+            SaveHistoricDatabaseHandler::class,
         ],
     ];
 
