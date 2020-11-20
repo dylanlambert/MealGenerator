@@ -1,38 +1,51 @@
 <script>
-    $(document).ready(function() {
-        $('.ingredients').select2();
-    });
-
-    $(function () {
-        $(document).on('click', '.btn-add', function (e) {
-            e.preventDefault();
-
-            var dynaForm = $('.dynamic-wrap'),
-                currentEntry = $(this).parents('.entry:first'),
-                newEntry = $(currentEntry.clone());
-
-            id = randomString(10)
-            idSelect1 = 'ingredient[' + id + '][id]';
-            idInput = 'ingredient[' + id + '][qty]';
-            idSelect2 = 'ingredient[' + id + '][type]';
-
-            newEntry.find('select').first().attr('name', idSelect1);
-            newEntry.find('input').attr('name', idInput);
-            newEntry.find('select').last().attr('name', idSelect2);
-
-            newEntry.appendTo(dynaForm);
-
-            newEntry.find('input').val('');
-            dynaForm.find('.entry:not(:last) .btn-add')
-                .removeClass('btn-add').addClass('btn-remove')
-                .removeClass('btn-success').addClass('btn-danger')
-                .html('<i class="far fa-minus-square"></i>');
-        }).on('click', '.btn-remove', function (e) {
-            $(this).parents('.entry:first').remove();
-
-            e.preventDefault();
-            return false;
-        });
+    $(function() {
+        // Remove button click
+        $(document).on(
+            'click',
+            '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
+            function(e) {
+                e.preventDefault();
+                $(this).closest('.form-inline').remove();
+            }
+        );
+        // Add button click
+        $(document).on(
+            'click',
+            '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+            function(e) {
+                e.preventDefault();
+                var container = $(this).closest('[data-role="dynamic-fields"]');
+                cloned = container.children().filter('.form-inline:first-child').clone();
+                ingredientsSelect = cloned.find('.ingredient');
+                id = randomString(5);
+                options = ingredientsSelect.find('option').clone();
+                toadd = "<div class=\"form-inline dynamicField\">" +
+                    "<div class=\"form-group\">\n" +
+                    "    <label class=\"sr-only\" for=\"field-value\">Ingrédient</label>\n" +
+                    "    <select class=\"selectpicker ingredient\" data-live-search=\"true\" name=\"ingredient["+id+"][id]\">\n" +
+                    "    </select>\n" +
+                    "</div>\n" +
+                    "<div class=\"form-group\">\n" +
+                    "    <label class=\"sr-only\" for=\"field-value\">Quantitée</label>\n" +
+                    "    <input class=\"form-control qty\" type=\"number\" placeholder=\"quantité\" name=\"ingredient["+id+"][qty]\">\n" +
+                    "</div>\n" +
+                    "<div class=\"form-group\">\n" +
+                    "    <label class=\"sr-only\" for=\"field-value\">Unitée</label>\n" +
+                    "    <select class=\"form-control type\" name=\"ingredient["+id+"][type]\">\n" +
+                    "        <option value=\"unite\"> Unité </option>\n" +
+                    "        <option value=\"gramme\"> Gramme </option>\n" +
+                    "        <option value=\"millimeter\"> Millilitre </option>\n" +
+                    "    </select>\n" +
+                    "</div>\n" +
+                    "<button class=\"btn btn-danger\" data-role=\"remove\">-</button>\n" +
+                    "<button class=\"btn btn-primary\" data-role=\"add\">+</button>" +
+                    "</div>";
+                container.append(toadd);
+                $('select[name="ingredient['+id+'][id]"]').append(options);
+                $('select[name="ingredient['+id+'][id]"]').selectpicker('refresh');
+            }
+        );
     });
 
     function randomString(length) {

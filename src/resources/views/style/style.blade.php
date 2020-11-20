@@ -55,4 +55,16 @@
     .greenBg {
         background-color: #00E676;
     }
+
+    .dynamicField {
+        margin-bottom: 1em;
+    }
+
+    .dynamicField .form-control {
+        margin-right: 1em;
+    }
+
+    .dynamicField button {
+        margin-right: 1em;
+    }
 </style>
