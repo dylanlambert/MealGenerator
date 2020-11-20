@@ -22,3 +22,4 @@ Route::get('/recipe/update/{recipeId}', 'RecipeController@updateGet');
 Route::post('/recipe/update/{recipeId}', 'RecipeController@updatePost');
 Route::get('/generator', 'GeneratorController@generate');
 Route::get('/test/react', 'TestController@react');
+Route::post('/historic/save', 'HistoricController@save');

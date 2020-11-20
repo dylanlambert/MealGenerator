@@ -19,12 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc6c4d28-5c9f-4f21-a4d2-fe0d13f4a9e2" name="Default Changelist" comment="catch exceptin on HistoricRegisterer">
-      <change afterPath="$PROJECT_DIR$/src/app/Historic.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Infrastructure/Handlers/SaveHistoricDatabaseHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/migrations/2020_11_20_113032_add_historic_table.php" afterDir="false" />
+    <list default="true" id="cc6c4d28-5c9f-4f21-a4d2-fe0d13f4a9e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/Http/Controllers/HistoricController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/Generator/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/Generator/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +43,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="server">
     <include_path>
       <path value="$PROJECT_DIR$/src/vendor/composer" />
@@ -269,7 +269,7 @@
       <workItem from="1605345540624" duration="766000" />
       <workItem from="1605690135556" duration="683000" />
       <workItem from="1605690879938" duration="14435000" />
-      <workItem from="1605821394900" duration="13129000" />
+      <workItem from="1605821394900" duration="14315000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1601132710652</created>
@@ -369,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605871694181</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add save historic handler">
+      <created>1605872443410</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1605872443410</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,7 +412,8 @@
     <MESSAGE value="Fix live search and dynamic field" />
     <MESSAGE value="Add Historic Registerer" />
     <MESSAGE value="catch exceptin on HistoricRegisterer" />
-    <option name="LAST_COMMIT_MESSAGE" value="catch exceptin on HistoricRegisterer" />
+    <MESSAGE value="add save historic handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="add save historic handler" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1300" y="391" width="824" height="691" key="#CLI_Interpreters" timestamp="1605691505812">
@@ -454,11 +462,11 @@
     </state>
     <state x="1458" y="598" width="586" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/72.27.3368.1413@72.27.3368.1413" timestamp="1604244905102" />
     <state x="1459" y="605" width="498" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/74.38.3366.1402@74.38.3366.1402" timestamp="1604677883632" />
-    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2" timestamp="1605871713653">
+    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2" timestamp="1605872443229">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2/72.27.3368.1413@72.27.3368.1413" timestamp="1604251456727" />
-    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2/74.38.3366.1402@74.38.3366.1402" timestamp="1605871713653" />
+    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2/74.38.3366.1402@74.38.3366.1402" timestamp="1605872443229" />
     <state x="1022" y="633" width="281" height="203" key="Github.ShareDialog" timestamp="1601132756315">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
@@ -499,12 +507,12 @@
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
     <state width="263" height="541" key="HiddenNamespacesPopup/72.27.3368.1413@72.27.3368.1413" timestamp="1601133213839" />
-    <state x="1412" y="445" width="695" height="607" key="NewPhpClassDialog" timestamp="1605871971998">
+    <state x="1412" y="445" width="695" height="607" key="NewPhpClassDialog" timestamp="1605872544824">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="1383" y="445" width="695" height="607" key="NewPhpClassDialog/26.38.3414.1402@26.38.3414.1402" timestamp="1604756554413" />
     <state x="1411" y="437" width="743" height="607" key="NewPhpClassDialog/72.27.3368.1413@72.27.3368.1413" timestamp="1604258027041" />
-    <state x="1412" y="445" width="751" height="600" key="NewPhpClassDialog/74.38.3366.1402@74.38.3366.1402" timestamp="1605871971998" />
+    <state x="1412" y="445" width="751" height="600" key="NewPhpClassDialog/74.38.3366.1402@74.38.3366.1402" timestamp="1605872544824" />
     <state x="959" y="658" width="399" height="164" key="NewPhpFileDialog" timestamp="1604784689568">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
@@ -519,11 +527,11 @@
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state width="498" height="446" key="SwitcherDM/74.38.3366.1402@74.38.3366.1402" timestamp="1605694066503" />
-    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1605871695558">
+    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1605872444938">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="539" y="463" width="800" height="543" key="Vcs.Push.Dialog.v2/72.27.3368.1413@72.27.3368.1413" timestamp="1604251458139" />
-    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2/74.38.3366.1402@74.38.3366.1402" timestamp="1605871695558" />
+    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2/74.38.3366.1402@74.38.3366.1402" timestamp="1605872444938" />
     <state x="1565" y="578" width="362" height="278" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1604607588729">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
@@ -540,10 +548,10 @@
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="1536" y="652" width="431" height="181" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/74.38.3366.1402@74.38.3366.1402" timestamp="1604776670239" />
-    <state x="1412" y="424" width="616" height="554" key="find.popup" timestamp="1605824362626">
+    <state x="1412" y="424" width="616" height="554" key="find.popup" timestamp="1605873269936">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
-    <state x="1412" y="424" width="616" height="554" key="find.popup/74.38.3366.1402@74.38.3366.1402" timestamp="1605824362626" />
+    <state x="1412" y="424" width="616" height="554" key="find.popup/74.38.3366.1402@74.38.3366.1402" timestamp="1605873269936" />
     <state x="1582" y="488" width="337" height="498" key="refactoring.ChangeSignatureDialog" timestamp="1604247415181">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
@@ -552,12 +560,12 @@
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="1384" y="326" key="run.anything.popup/74.38.3366.1402@74.38.3366.1402" timestamp="1604774219241" />
-    <state x="828" y="354" width="672" height="673" key="search.everywhere.popup" timestamp="1605871836155">
+    <state x="828" y="354" width="672" height="673" key="search.everywhere.popup" timestamp="1605873485746">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="791" y="354" width="682" height="673" key="search.everywhere.popup/26.38.3414.1402@26.38.3414.1402" timestamp="1604757118983" />
     <state x="826" y="345" width="672" height="678" key="search.everywhere.popup/72.27.3368.1413@72.27.3368.1413" timestamp="1604259405961" />
-    <state x="828" y="354" width="672" height="673" key="search.everywhere.popup/74.38.3366.1402@74.38.3366.1402" timestamp="1605871836155" />
+    <state x="828" y="354" width="672" height="673" key="search.everywhere.popup/74.38.3366.1402@74.38.3366.1402" timestamp="1605873485746" />
     <state x="807" y="650" width="537" height="187" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1601130378790">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
