@@ -26,7 +26,11 @@ final class HistoricRegisterer
             $request->getRecipesId(),
         );
 
-        $this->commandBus->dispatch($command);
+        try {
+            $this->commandBus->dispatch($command);
+        } catch (\Exception $exception) {
+            return new HistoricRegistererResponse(false);
+        }
 
         return new HistoricRegistererResponse(true);
     }

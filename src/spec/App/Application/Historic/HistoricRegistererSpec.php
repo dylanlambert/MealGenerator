@@ -8,6 +8,7 @@ use App\Domain\Commands\SaveHistoric;
 use App\Domain\Utils\Application\CommandBus;
 use App\Domain\Utils\Id\StringId;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 class HistoricRegistererSpec extends ObjectBehavior
 {
@@ -43,5 +44,12 @@ class HistoricRegistererSpec extends ObjectBehavior
         $commandBus->dispatch($command)->shouldBeCalled();
 
         $this->register($request)->isRegistered()->shouldBeLike(true);
+    }
+
+    function it_catches_dispatch_error(CommandBus $commandBus)
+    {
+        $request = new HistoricRegistererRequest('historique du 09-11-2020', [new StringId('recipe-id-1'),]);
+        $commandBus->dispatch(Argument::any())->willThrow(new \Exception());
+        $this->register($request)->isRegistered()->shouldBe(false);
     }
 }

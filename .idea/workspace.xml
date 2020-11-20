@@ -20,12 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc6c4d28-5c9f-4f21-a4d2-fe0d13f4a9e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Historic/HistoricRegisterer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Historic/HistoricRegistererRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Application/Historic/HistoricRegistererResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Domain/Commands/SaveHistoric.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spec/App/Application/Historic/HistoricRegistererSpec.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Application/Historic/HistoricRegisterer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Application/Historic/HistoricRegisterer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spec/App/Application/Historic/HistoricRegistererSpec.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/spec/App/Application/Historic/HistoricRegistererSpec.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +267,7 @@
       <workItem from="1605345540624" duration="766000" />
       <workItem from="1605690135556" duration="683000" />
       <workItem from="1605690879938" duration="14435000" />
-      <workItem from="1605821394900" duration="12166000" />
+      <workItem from="1605821394900" duration="12373000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1601132710652</created>
@@ -356,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605831498500</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add Historic Registerer">
+      <created>1605871482276</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605871482276</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +394,8 @@
     <MESSAGE value="Add some phpstorm config&#10;Add process into recipe + tinymce editor" />
     <MESSAGE value="add logic to ingredient list" />
     <MESSAGE value="Fix live search and dynamic field" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix live search and dynamic field" />
+    <MESSAGE value="Add Historic Registerer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Historic Registerer" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1300" y="391" width="824" height="691" key="#CLI_Interpreters" timestamp="1605691505812">
@@ -439,11 +444,11 @@
     </state>
     <state x="1458" y="598" width="586" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/72.27.3368.1413@72.27.3368.1413" timestamp="1604244905102" />
     <state x="1459" y="605" width="498" height="277" key="#com.jetbrains.php.refactoring.move.PhpMoveClassDialog#1/74.38.3366.1402@74.38.3366.1402" timestamp="1604677883632" />
-    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2" timestamp="1605831498345">
+    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2" timestamp="1605871482237">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="483" y="217" width="912" height="1034" key="CommitChangelistDialog2/72.27.3368.1413@72.27.3368.1413" timestamp="1604251456727" />
-    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2/74.38.3366.1402@74.38.3366.1402" timestamp="1605831498345" />
+    <state x="485" y="227" width="912" height="1074" key="CommitChangelistDialog2/74.38.3366.1402@74.38.3366.1402" timestamp="1605871482237" />
     <state x="1022" y="633" width="281" height="203" key="Github.ShareDialog" timestamp="1601132756315">
       <screen x="72" y="27" width="3368" height="1413" />
     </state>
@@ -504,11 +509,11 @@
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state width="498" height="446" key="SwitcherDM/74.38.3366.1402@74.38.3366.1402" timestamp="1605694066503" />
-    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1605831499994">
+    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1605871483486">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
     <state x="539" y="463" width="800" height="543" key="Vcs.Push.Dialog.v2/72.27.3368.1413@72.27.3368.1413" timestamp="1604251458139" />
-    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2/74.38.3366.1402@74.38.3366.1402" timestamp="1605831499994" />
+    <state x="541" y="471" width="800" height="543" key="Vcs.Push.Dialog.v2/74.38.3366.1402@74.38.3366.1402" timestamp="1605871483486" />
     <state x="1565" y="578" width="362" height="278" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1604607588729">
       <screen x="74" y="38" width="3366" height="1402" />
     </state>
