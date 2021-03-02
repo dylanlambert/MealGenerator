@@ -16,7 +16,7 @@ services:
     sysctls:
       - net.ipv4.ip_unprivileged_port_start=0
   database:
-    image: mysql:8.0.21
+    image: mariadb:10.5.9
     ports:
       - 3306:3306
     volumes:

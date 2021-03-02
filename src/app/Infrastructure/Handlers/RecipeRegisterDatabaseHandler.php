@@ -23,6 +23,7 @@ final class RecipeRegisterDatabaseHandler
         $model->id = (string) $this->idFactory->generateId();
         $model->name = $command->getName();
         $model->preparation_time = $command->getPreparationTime();
+        $model->process = '';
         $model->save();
     }
 }
