@@ -18,6 +18,8 @@
 
                    <button class="btn btn-success" type="submit">Connection</button>
                </form>
+               <br>
+               <h2>Pas encore inscrit ? <small> <br> <a href="/inscription"><i class="fas fa-sign-in"></i> inscrivez vous !</a></small></h2>
            </div>
         </div>
     </div>
