@@ -43,4 +43,25 @@ final class EloquentUserRepository implements UserRepository
             $userModel->adresse_email
         );
     }
+
+    /**
+     * @param string $adresseEmail
+     * @return User
+     */
+    public function findUserByEmail(string $adresseEmail): ?User
+    {
+        $userModel = \App\User::firstWhere('adresse_email', $adresseEmail);
+
+        if($userModel !== null) {
+            return new User(
+                Uuid::fromString($userModel->id),
+                $userModel->nom,
+                $userModel->prenom,
+                $userModel->adresse_email,
+            );
+        }
+
+        return null;
+
+    }
 }

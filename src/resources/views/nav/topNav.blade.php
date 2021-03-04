@@ -13,6 +13,9 @@
                 <a class="nav-link" href="/recipes"><i class="fas fa-list-ul"></i> Recettes</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/inscription"><i class="fas fa-sign-in"></i> Inscription</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/deconnection"><i class="fas fa-sign-out"></i> Deconnection</a>
             </li>
         </ul>
