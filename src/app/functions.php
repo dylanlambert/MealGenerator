@@ -27,4 +27,9 @@ namespace App\Http {
 
         return $action($user);
     }
+
+    function setUserSession(Request $request) {
+        session(['adresseEmail' => $request['adresseEmail']]);
+        session(['motDePasse' => $request['password']]);
+    }
 }

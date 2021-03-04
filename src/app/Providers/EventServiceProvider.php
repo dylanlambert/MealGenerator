@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Domain\Commands\InscrireUser;
 use App\Domain\Commands\RecipeRegistererCommand;
 use App\Domain\Commands\SaveHistoric;
 use App\Domain\Commands\UpdateRecipe;
+use App\Infrastructure\Handlers\InscrireUserDatabaseHandler;
 use App\Infrastructure\Handlers\RecipeRegisterDatabaseHandler;
 use App\Infrastructure\Handlers\SaveHistoricDatabaseHandler;
 use App\Infrastructure\Handlers\UpdateRecipeDatabaseHandler;
@@ -32,6 +34,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         SaveHistoric::class => [
             SaveHistoricDatabaseHandler::class,
+        ],
+        InscrireUser::class => [
+            InscrireUserDatabaseHandler::class,
         ],
     ];
 

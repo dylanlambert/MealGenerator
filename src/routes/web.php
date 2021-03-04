@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@get');
 Route::get('/connection', 'ConnectionController@showConnection');
 Route::get('/deconnection', 'ConnectionController@deconnection');
 Route::post('/connection', 'ConnectionController@connection');
+Route::post('/inscription', 'InscriptionController@inscription');
+Route::get('/inscription', 'InscriptionController@getInscription');
 Route::get('/import', 'ImportController@import');
 Route::get('/recipes', 'RecipeController@getList');
 Route::post('/recipe', 'RecipeController@register');
