@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Domain\Repositories\HistoricRepository;
 use App\Domain\Repositories\IngredientRepository;
 use App\Domain\Repositories\RecipeRepository;
+use App\Domain\Repositories\UserRepository;
 use App\Domain\Utils\Application\CommandBus;
 use App\Domain\Utils\Id\Id;
 use App\Domain\Utils\Id\IdFactory;
@@ -12,6 +13,7 @@ use App\Domain\Utils\Application\TransactionBroker;
 use App\Infrastructure\Repositories\EloquentHistoricRepository;
 use App\Infrastructure\Repositories\EloquentIngredientRepository;
 use App\Infrastructure\Repositories\EloquentRecipeRepository;
+use App\Infrastructure\Repositories\EloquentUserRepository;
 use App\Infrastructure\Utils\LaravelTransactionBroker;
 use App\Infrastructure\Utils\LaravelEventDispatcher;
 use App\Infrastructure\Utils\RamseyUuidFactory;
@@ -36,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RecipeRepository::class, EloquentRecipeRepository::class);
         $this->app->bind(IngredientRepository::class, EloquentIngredientRepository::class);
         $this->app->bind(HistoricRepository::class, EloquentHistoricRepository::class);
+        $this->app->bind(UserRepository::class, EloquentUserRepository::class);
     }
 
     /**

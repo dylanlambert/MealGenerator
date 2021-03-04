@@ -32,6 +32,12 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $nom
+ * @property string $prenom
+ * @property string $adresse_email
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAdresseEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePrenom($value)
  */
 class User extends Authenticatable
 {
