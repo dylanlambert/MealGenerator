@@ -76,7 +76,7 @@ class RecipeController extends Controller
             $applicationRequest = new RecipeUpdaterRequest(
                 $request['recipeId'],
                 $request['name'],
-                $request['ingredient'],
+                $request['ingredient'] ?? [],
                 $request['preparationTime'],
                 $request['recipe'] === null ? '' : $request['recipe'],
             );

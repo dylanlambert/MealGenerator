@@ -28,7 +28,7 @@
                         <br>
                         <div class="col">
                             <div data-role="dynamic-fields">
-                                @foreach($recipe->getIngredients() as $ingredientMeasured)
+                                @forelse($recipe->getIngredients() as $ingredientMeasured)
                                     <div class="form-inline dynamicField">
                                         <div class="form-group">
                                             <label class="sr-only" for="field-value">Ingrédient</label>
@@ -36,14 +36,12 @@
                                                     name="ingredient[{{substr($ingredientMeasured->getId(), 0,  5)}}][id]">
                                                 @foreach($ingredients as $ingredient)
                                                     <option data-tokens="{{$ingredient->getName()}}"
-                                                        value="{{$ingredient->getId()}}">{{$ingredient->getName()}}</option>
-                                                    @if($ingredientMeasured->getId() === $ingredient->getId())
-                                                        <option value="{{$ingredient->getId()}}"
-                                                                selected>{{$ingredient->getName()}}</option>
-                                                    @else
-                                                        <option
-                                                            value="{{$ingredient->getId()}}">{{$ingredient->getName()}}</option>
-                                                    @endif
+                                                            value="{{$ingredient->getId()}}"
+                                                            @if($ingredientMeasured->getId() === $ingredient->getId())
+                                                            selected
+                                                        @endif
+                                                    >{{$ingredient->getName()}}</option>
+
                                                 @endforeach
                                             </select>
                                         </div>
@@ -85,7 +83,43 @@
                                             +
                                         </button>
                                     </div>  <!-- /div.form-inline -->
-                                @endforeach
+                                @empty
+                                    <div class="form-inline dynamicField">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="field-value">Ingrédient</label>
+                                            <select class="selectpicker ingredient" data-live-search="true" name="ingredient[0][id]">
+                                                @foreach($ingredients as $ingredient)
+                                                    <option data-tokens="{{$ingredient->getName()}}" value="{{$ingredient->getId()}}">{{$ingredient->getName()}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="field-value">Quantitée</label>
+                                            <input class="form-control qty" type="number" placeholder="quantité" name="ingredient[0][qty]" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="field-value">Unitée</label>
+                                            <select class="form-control type"
+                                                    name="ingredient[0][type]">
+                                                <option value="unite">
+                                                    Unité
+                                                </option>
+                                                <option value="gramme">
+                                                    Gramme
+                                                </option>
+                                                <option value="millimeter">
+                                                    Millilitre
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <button class="btn btn-danger" data-role="remove">
+                                            -
+                                        </button>
+                                        <button class="btn btn-primary" data-role="add">
+                                            +
+                                        </button>
+                                    </div>  <!-- /div.form-inline -->
+                                @endforelse
                             </div>
                         </div>
                     </li>

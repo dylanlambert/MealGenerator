@@ -16,7 +16,6 @@ final class RecipeUpdaterRequest
     {
         $this->recipeId = $recipeId;
         $this->name = $name;
-
         foreach ($ingredients as $index => $ingredient) {
             if($ingredient['id'] === null) {
                 unset($ingredients[$index]);
