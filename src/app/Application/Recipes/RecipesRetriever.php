@@ -28,32 +28,32 @@ final class RecipesRetriever
     {
         $recipes = $this->recipeRepository->get();
 
-        if($request->getPreparationTimeUnder() !== null) {
+        if ($request->getPreparationTimeUnder() !== null) {
             $recipes = $recipes->getUnderPreparationTime(new PreparationTime($request->getPreparationTimeUnder()));
         }
         $recipesDto = $recipes
             ->map(
                 fn(Recipe $recipe) => new OldRecipeDto(
-                    (string) $recipe->getId(),
+                    (string)$recipe->getId(),
                     $recipe->getName(),
                     $recipe->getPreparationTime(),
                     $recipe->getMeasuredIngredients()->map(
                         fn(QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
-                            (string) $ingredient->getIngredient()->getId(),
+                            (string)$ingredient->getIngredient()->getId(),
                             $ingredient->getIngredient()->getName(),
                             $ingredient->getQuantity()->getFormatedQuantity(),
                             $ingredient->getQuantity()->getQuantity(),
                             $ingredient->getQuantity()->match(
-                                fn()=>'unit',
-                                fn()=>'gramme',
-                                fn()=>'milliliter',
+                                fn() => 'unit',
+                                fn() => 'gramme',
+                                fn() => 'milliliter',
                             )
                         )
                     ),
                     sprintf('/recipe/%s', $recipe->getId()),
                     $recipe->getRecipe(),
                 )
-        );
+            );
         return new RecipesRetrieverResponse($recipesDto);
     }
 
@@ -64,21 +64,17 @@ final class RecipesRetriever
         $recipesDto = $recipes
             ->map(
                 fn(Recipe $recipe) => new RecipeDto(
-                    (string) $recipe->getId(),
+                    (string)$recipe->getId(),
                     $recipe->getName(),
                     $recipe->getPreparationTime()->getFormattedPreparationTime(),
                     $recipe->getMeasuredIngredients()->map(
-                        fn(QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
-                            (string) $ingredient->getIngredient()->getId(),
-                            $ingredient->getIngredient()->getName(),
-                            $ingredient->getQuantity()->getFormatedQuantity(),
-                            $ingredient->getQuantity()->getQuantity(),
-                            $ingredient->getQuantity()->match(
-                                fn()=>'unit',
-                                fn()=>'gramme',
-                                fn()=>'milliliter',
-                            )
-                        )
+                        function (QuantifiedIngredient $ingredient) {
+                            return
+                                [
+                                    'ingredientName' => $ingredient->getIngredient()->getName(),
+                                    'quantity' => $ingredient->getQuantity()->getFormatedQuantity(),
+                                ];
+                        }
                     ),
                     $recipe->getRecipe(),
                 )

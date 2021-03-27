@@ -188,7 +188,11 @@
                             "properties": {
                                 "ingredientName": {
                                     "type": "string",
-                                    "example": "6 Carrotes"
+                                    "example": "Carrotes"
+                                },
+                                "quantity": {
+                                    "type": "string",
+                                    "example": "6 Kg"
                                 }
                             },
                             "type": "object"

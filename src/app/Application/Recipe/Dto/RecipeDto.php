@@ -15,7 +15,8 @@ namespace App\Application\Recipe\Dto;
  *      property="ingredients",
  *     type="array",
  *     @OA\Items(
- *          @OA\Property(property="ingredientName", type="string", example="6 Carrotes"),
+ *          @OA\Property(property="ingredientName", type="string", example="Carrotes"),
+ *          @OA\Property(property="quantity", type="string", example="6 Kg"),
  *      )
  * ),
  * @OA\Property(property="recipe", type="string"),
