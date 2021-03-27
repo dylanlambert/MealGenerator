@@ -1,0 +1,177 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Foods",
+        "version": "0.1"
+    },
+    "paths": {
+        "/user/inscription": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "description": "Register by email, password, user name, user firstname",
+                "operationId": "App\\Http\\Controllers\\UserController::inscription",
+                "requestBody": {
+                    "description": "Pass user informations",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "userEmail",
+                                    "userPassword",
+                                    "userName",
+                                    "userFirstName"
+                                ],
+                                "properties": {
+                                    "userEmail": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "userPassword": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    },
+                                    "userName": {
+                                        "type": "string",
+                                        "example": "Lambert"
+                                    },
+                                    "userFirstName": {
+                                        "type": "string",
+                                        "example": "Dylan"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Registration failure",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Email already use"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Registration complete"
+                    }
+                }
+            }
+        },
+        "/user/connexion": {
+            "post": {
+                "tags": [
+                    "Connexion"
+                ],
+                "description": "Retrieve user by email, password",
+                "operationId": "App\\Http\\Controllers\\UserController::connexion",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "userEmail",
+                                    "userPassword"
+                                ],
+                                "properties": {
+                                    "userEmail": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "userPassword": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "user not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UserDto": {
+                "properties": {
+                    "userId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "readOnly": "true"
+                    },
+                    "userEmail": {
+                        "description": "User unique email address",
+                        "type": "string",
+                        "format": "email",
+                        "readOnly": "true",
+                        "example": "user@gmail.com"
+                    },
+                    "userName": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Doe"
+                    },
+                    "userFirstName": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "John"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserDto"
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

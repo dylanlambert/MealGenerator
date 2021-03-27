@@ -34,15 +34,11 @@ final class Inscription
         $user = $this->userRepository->findUserByEmail($request->email());
 
         if($user !== null) {
-            return new InscriptionResponse(false);
+            return new InscriptionResponse('email already used');
         }
 
-        try {
-            $this->commandBus->dispatch($command);
-        } catch (\Exception $exception) {
-            return new InscriptionResponse(false);
-        }
+        $this->commandBus->dispatch($command);
 
-        return new InscriptionResponse(true);
+        return new InscriptionResponse(null);
     }
 }

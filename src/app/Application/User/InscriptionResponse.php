@@ -6,15 +6,20 @@ namespace App\Application\User;
 
 final class InscriptionResponse
 {
-    private bool $inscrit;
+    private ?string $error;
 
-    public function __construct(bool $inscrit)
+    public function __construct(?string $error)
     {
-        $this->inscrit = $inscrit;
+        $this->error = $error;
     }
 
     public function isInscrit():bool
     {
-        return $this->inscrit;
+        return $this->error === null;
+    }
+
+    public function error():?string
+    {
+        return $this->error;
     }
 }

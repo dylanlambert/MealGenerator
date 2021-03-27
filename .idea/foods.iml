@@ -132,6 +132,9 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/http-client-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/zircote/swagger-php" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/swagger-api/swagger-ui" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/darkaonline/l5-swagger" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

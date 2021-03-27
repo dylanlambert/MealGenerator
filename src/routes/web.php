@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@get');
+
+Route::post('/user/inscription', 'UserController@inscription');
+Route::post('/user/connexion', 'UserController@connexion');
+
 Route::get('/connection', 'ConnectionController@showConnection');
 Route::get('/deconnection', 'ConnectionController@deconnection');
 Route::post('/connection', 'ConnectionController@connection');
@@ -26,5 +30,4 @@ Route::get('/recipe/{recipeId}', 'RecipeController@get');
 Route::get('/recipe/update/{recipeId}', 'RecipeController@updateGet');
 Route::post('/recipe/update/{recipeId}', 'RecipeController@updatePost');
 Route::get('/generator', 'GeneratorController@generate');
-Route::get('/test/react', 'TestController@react');
 Route::post('/historic/save', 'HistoricController@save');
