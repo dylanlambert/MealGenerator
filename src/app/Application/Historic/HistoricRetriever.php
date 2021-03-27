@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Application\Historic;
 
 use App\Application\Recipe\Dto\QuantifiedIngredientDto;
-use App\Application\Recipe\Dto\RecipeDto;
+use App\Application\Recipe\Dto\OldRecipeDto;
 use App\Domain\Entities\QuantifiedIngredient;
 use App\Domain\Entities\Recipe;
 use App\Domain\Repositories\HistoricRepository;
@@ -40,7 +40,7 @@ final class HistoricRetriever
         return new HistoricRetrieverResponse(
             $historic->getName(),
             array_map(
-                fn(Recipe $recipe) => new RecipeDto(
+                fn(Recipe $recipe) => new OldRecipeDto(
                     (string) $recipe->getId(),
                     $recipe->getName(),
                     $recipe->getPreparationTime(),

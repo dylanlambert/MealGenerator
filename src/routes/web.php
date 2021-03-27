@@ -15,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@get');
 
+// API
+
+// User
 Route::post('/user/inscription', 'UserController@inscription');
 Route::post('/user/connexion', 'UserController@connexion');
 
+// Recipe
+Route::get('/recipes/all', 'RecipeController@retrieve');
+
+// APP DEPRECATED
 Route::get('/connection', 'ConnectionController@showConnection');
 Route::get('/deconnection', 'ConnectionController@deconnection');
 Route::post('/connection', 'ConnectionController@connection');

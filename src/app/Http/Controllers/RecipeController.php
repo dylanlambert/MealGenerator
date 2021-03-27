@@ -19,6 +19,37 @@ use function App\Http\verifierUser;
 
 class RecipeController extends Controller
 {
+    /**
+     * @OA\Get(
+     *      path="/recipes/all",
+     *      description="Retrieve all recepies",
+     *      tags={"Recipies"},
+     *
+     *      @OA\Response(
+     *          response=200,
+     *          description="Return recipes",
+     *          @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="recipes",
+     *                  type="array",
+     *                  @OA\Items(type="object", ref="#/components/schemas/RecipeDto")
+     *              )
+     *          )
+     *      ),
+     *)
+     */
+    public function retrieve(RecipesRetriever $recipeRetriever)
+    {
+        $recipes = $recipeRetriever->retrieve(new RecipesRetrieverRequest(null))->getRecipes();
+
+        if($recipes === null) {
+            return response('', 400);
+        }
+
+        return response()->json(["recipes" => $recipes]);
+    }
+
+
     public function get(Request $request, RecipeRetriever $recipeRetriever)
     {
       return verifierUser($request, function(User $user) use ($request, $recipeRetriever) {
@@ -45,7 +76,7 @@ class RecipeController extends Controller
     {
         return verifierUser($request, function(User $user) use ($request, $recipesRetriever) {
             $applicationRequest = new RecipesRetrieverRequest($request['preparationTime'] ?? null);
-            $applicationResponse = $recipesRetriever->retrieve($applicationRequest);
+            $applicationResponse = $recipesRetriever->oldRetrieve($applicationRequest);
 
             if($applicationResponse->getRecipes() === null) {
                 response('', 400);

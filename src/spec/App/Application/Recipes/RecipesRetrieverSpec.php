@@ -3,7 +3,7 @@
 namespace spec\App\Application\Recipes;
 
 use App\Application\Recipe\Dto\QuantifiedIngredientDto;
-use App\Application\Recipe\Dto\RecipeDto;
+use App\Application\Recipe\Dto\OldRecipeDto;
 use App\Application\Recipes\RecipesRetriever;
 use App\Application\Recipes\RecipesRetrieverRequest;
 use App\Domain\Entities\Ingredient;
@@ -70,7 +70,7 @@ class RecipesRetrieverSpec extends ObjectBehavior
         $recipeRepository->get()->shouldBeCalled()->willReturn($recipeList);
 
         $dtos = [
-            new RecipeDto(
+            new OldRecipeDto(
                 'recipe-id-1',
                 'Recipe 1',
                 new PreparationTime(600),
@@ -81,7 +81,7 @@ class RecipesRetrieverSpec extends ObjectBehavior
                 '/recipe/recipe-id-1',
                 'process',
             ),
-            new RecipeDto(
+            new OldRecipeDto(
                 'recipe-id-2',
                 'Recipe 2',
                 new PreparationTime(3600),
@@ -94,6 +94,6 @@ class RecipesRetrieverSpec extends ObjectBehavior
             )
         ];
 
-        $this->retrieve($request)->getRecipes()->shouldBeLike($dtos);
+        $this->oldRetrieve($request)->getRecipes()->shouldBeLike($dtos);
     }
 }

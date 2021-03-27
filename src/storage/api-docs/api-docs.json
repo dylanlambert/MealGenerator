@@ -5,6 +5,35 @@
         "version": "0.1"
     },
     "paths": {
+        "/recipes/all": {
+            "get": {
+                "tags": [
+                    "Recipies"
+                ],
+                "description": "Retrieve all recepies",
+                "operationId": "App\\Http\\Controllers\\RecipeController::retrieve",
+                "responses": {
+                    "200": {
+                        "description": "Return recipes",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "recipes": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/RecipeDto"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/user/inscription": {
             "post": {
                 "tags": [
@@ -139,6 +168,41 @@
     },
     "components": {
         "schemas": {
+            "RecipeDto": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Boeuf Bourgignon"
+                    },
+                    "preparationTime": {
+                        "type": "string",
+                        "example": "16m"
+                    },
+                    "ingredients": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "ingredientName": {
+                                    "type": "string",
+                                    "example": "6 Carrotes"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "recipe": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "RecipeDto"
+                }
+            },
             "UserDto": {
                 "properties": {
                     "userId": {

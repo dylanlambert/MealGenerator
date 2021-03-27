@@ -5,7 +5,7 @@ namespace spec\App\Application\Historic;
 use App\Application\Historic\HistoricRetriever;
 use App\Application\Historic\HistoricRetrieverRequest;
 use App\Application\Historic\HistoricRetrieverResponse;
-use App\Application\Recipe\Dto\RecipeDto;
+use App\Application\Recipe\Dto\OldRecipeDto;
 use App\Domain\Entities\Historic;
 use App\Domain\Entities\QuantifiedIngredientList;
 use App\Domain\Entities\Recipe;
@@ -52,7 +52,7 @@ class HistoricRetrieverSpec extends ObjectBehavior
         $response = new HistoricRetrieverResponse(
             'historic name',
             [
-                new RecipeDto(
+                new OldRecipeDto(
                     'recipe-1',
                     'Recette 1',
                     new PreparationTime(600),
@@ -60,7 +60,7 @@ class HistoricRetrieverSpec extends ObjectBehavior
                     '/recipe/recipe-1',
                     'process',
                 ),
-                new RecipeDto(
+                new OldRecipeDto(
                     'recipe-2',
                     'Recette 2',
                     new PreparationTime(600),

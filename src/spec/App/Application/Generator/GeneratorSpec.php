@@ -4,7 +4,7 @@ namespace spec\App\Application\Generator;
 
 use App\Application\Generator\Generator;
 use App\Application\Generator\GeneratorRequest;
-use App\Application\Recipe\Dto\RecipeDto;
+use App\Application\Recipe\Dto\OldRecipeDto;
 use App\Domain\Entities\QuantifiedIngredientList;
 use App\Domain\Entities\Recipe;
 use App\Domain\Entities\RecipeList;
@@ -58,7 +58,7 @@ class GeneratorSpec extends ObjectBehavior
         $recipeRepository->get()->shouldBeCalled()->willReturn($recipeList);
 
         $recipes = [
-            new RecipeDto(
+            new OldRecipeDto(
                 'recipe-1',
                 'Recette 1',
                 new PreparationTime(600),
@@ -66,7 +66,7 @@ class GeneratorSpec extends ObjectBehavior
                 '/recipe/recipe-1',
                 'process',
             ),
-            new RecipeDto(
+            new OldRecipeDto(
                 'recipe-2',
                 'Recette 2',
                 new PreparationTime(600),

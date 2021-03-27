@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Application\Recipe;
 
 use App\Application\Recipe\Dto\QuantifiedIngredientDto;
-use App\Application\Recipe\Dto\RecipeDto;
+use App\Application\Recipe\Dto\OldRecipeDto;
 use App\Domain\Entities\QuantifiedIngredient;
 use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\RecipeRepository;
@@ -24,7 +24,7 @@ final class RecipeRetriever
         try {
             $recipe = $this->recipeRepository->find($request->getId());
 
-            $recipeDto = new RecipeDto(
+            $recipeDto = new OldRecipeDto(
                 (string) $recipe->getId(),
                 $recipe->getName(),
                 $recipe->getPreparationTime(),

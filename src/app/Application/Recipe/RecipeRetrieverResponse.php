@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Application\Recipe;
 
-use App\Application\Recipe\Dto\RecipeDto;
+use App\Application\Recipe\Dto\OldRecipeDto;
 
 final class RecipeRetrieverResponse
 {
-    private ?RecipeDto $recipe;
+    private ?OldRecipeDto $recipe;
 
-    public function __construct(?RecipeDto $recipe)
+    public function __construct(?OldRecipeDto $recipe)
     {
         $this->recipe = $recipe;
     }
 
-    public function getRecipe(): ?RecipeDto
+    public function getRecipe(): ?OldRecipeDto
     {
         return $this->recipe;
     }

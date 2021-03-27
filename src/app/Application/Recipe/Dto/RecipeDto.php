@@ -4,54 +4,40 @@ declare(strict_types=1);
 
 namespace App\Application\Recipe\Dto;
 
-use App\Domain\Utils\PreparationTime\PreparationTime;
-
+/**
+ *
+ * @OA\Schema(
+ * @OA\Xml(name="RecipeDto"),
+ * @OA\Property(property="id", type="string", format="uuid"),
+ * @OA\Property(property="name", type="string", example="Boeuf Bourgignon"),
+ * @OA\Property(property="preparationTime", type="string", example="16m"),
+ * @OA\Property(
+ *      property="ingredients",
+ *     type="array",
+ *     @OA\Items(
+ *          @OA\Property(property="ingredientName", type="string", example="6 Carrotes"),
+ *      )
+ * ),
+ * @OA\Property(property="recipe", type="string"),
+ * )
+ *
+ * Class RecipeDto
+ *
+ */
 final class RecipeDto
 {
-    private string $id;
-    private string $name;
-    private PreparationTime $preparationTime;
-    private array $ingredients;
-    private string $url;
-    private string $recipe;
+    public string $id;
+    public string $name;
+    public string $preparationTime;
+    public array $ingredients;
+    public string $recipe;
 
-    public function __construct(string $id, string $name, PreparationTime $preparationTime, array $ingredients, string $url, string $recipe)
+    public function __construct(string $id, string $name, string $preparationTime, array $ingredients, string $recipe)
     {
         $this->id = $id;
         $this->name = $name;
         $this->preparationTime = $preparationTime;
         $this->ingredients = $ingredients;
-        $this->url = $url;
         $this->recipe = $recipe;
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getPreparationTime(): PreparationTime
-    {
-        return $this->preparationTime;
-    }
-
-    public function getIngredients(): array
-    {
-        return $this->ingredients;
-    }
-
-    public function getUrl(): string
-    {
-        return $this->url;
-    }
-
-    public function getRecipe(): string
-    {
-        return $this->recipe;
     }
 }

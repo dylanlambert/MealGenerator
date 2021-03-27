@@ -3,7 +3,7 @@
 namespace spec\App\Application\Recipe;
 
 use App\Application\Recipe\Dto\QuantifiedIngredientDto;
-use App\Application\Recipe\Dto\RecipeDto;
+use App\Application\Recipe\Dto\OldRecipeDto;
 use App\Application\Recipe\RecipeRetrieverRequest;
 use App\Domain\Entities\Ingredient;
 use App\Domain\Entities\QuantifiedIngredient;
@@ -51,7 +51,7 @@ class RecipeRetrieverSpec extends ObjectBehavior
 
         $recipeRepository->find($request->getId())->shouldBeCalled()->willReturn($recipeEntity);
 
-        $recipeDto = new RecipeDto(
+        $recipeDto = new OldRecipeDto(
             'recipe-id',
             'Recipe Name',
             new PreparationTime(600),
