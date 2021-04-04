@@ -31,7 +31,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/user/inscription": {
@@ -137,7 +142,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Return connexion token"
+                        "description": "Return connexion token, need to be placed on all request (in header bearer style)"
                     },
                     "400": {
                         "description": "User not found",

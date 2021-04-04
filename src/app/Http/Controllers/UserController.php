@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Annotations as OA;
 
-use function App\Http\createConnectionToken;
+use function App\Http\createAuthToken;
 
 final class UserController
 {
@@ -76,14 +76,14 @@ final class UserController
      *          description="Pass user credentials",
      *          @OA\JsonContent(
      *              required={"userEmail","userPassword"},
-     *              @OA\Property(property="userEmail", type="string", format="email", example="dy.lambert@gmail.com"),
-     *              @OA\Property(property="userPassword", type="string", format="password", example="intosatan")
+     *              @OA\Property(property="userEmail", type="string", format="email", example="user1@mail.com"),
+     *              @OA\Property(property="userPassword", type="string", format="password", example="PassWord12345")
      *          ),
      *      ),
      *
      *      @OA\Response(
      *          response=200,
-     *          description="Return connexion token",
+     *          description="Return connexion token, need to be placed on all request (in header bearer style)",
      *          @OA\Property(property="token", type="string", format="uuid"),
      *      ),
      *
@@ -109,7 +109,7 @@ final class UserController
             return response()->json(['error' => $applicationResponse->error()], 400);
         }
 
-        $token = createConnectionToken(Uuid::fromString($applicationResponse->user()->userId()));
+        $token = createAuthToken(Uuid::fromString($applicationResponse->user()->userId()));
 
         return response()->json($token);
     }

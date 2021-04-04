@@ -87,4 +87,21 @@ final class EloquentRecipeRepository implements RecipeRepository
         )
         );
     }
+
+    public function getFromUserId(Id $userId): RecipeList
+    {
+        $collection = RecipeModel::whereUserId((string) $userId)->get();
+        /** @var Recipe $recipes */
+        $recipes = $collection->map(function (RecipeModel $recipe) {
+            return new Recipe(
+                Uuid::fromString($recipe->id),
+                $recipe->name,
+                new PreparationTime($recipe->preparation_time),
+                $this->measuredIngredientListFromRecipeModel($recipe),
+                $recipe->process,
+            );
+        });
+
+        return new RecipeList(...$recipes);
+    }
 }

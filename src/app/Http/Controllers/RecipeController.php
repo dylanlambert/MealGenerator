@@ -9,18 +9,21 @@ use App\Application\Recipe\RecipeRetriever;
 use App\Application\Recipe\RecipeRetrieverRequest;
 use App\Application\Recipe\RecipeUpdater;
 use App\Application\Recipe\RecipeUpdaterRequest;
+use App\Application\Recipes\ApiRecipesRetriever;
 use App\Application\Recipes\RecipesRetriever;
 use App\Application\Recipes\RecipesRetrieverRequest;
 use App\Domain\Entities\User;
 use App\Domain\Utils\Id\StringId;
 use Illuminate\Http\Request;
 
+use function App\Http\checkUserFromToken;
 use function App\Http\verifierUser;
 
 class RecipeController extends Controller
 {
     /**
      * @OA\Get(
+     *      security={{"bearer_token":{}}},
      *      path="/recipes/all",
      *      description="Retrieve all recepies",
      *      tags={"Recipies"},
@@ -38,8 +41,14 @@ class RecipeController extends Controller
      *      ),
      *)
      */
-    public function retrieve(RecipesRetriever $recipeRetriever)
+    public function retrieve(Request $request, ApiRecipesRetriever $recipeRetriever)
     {
+        $userId = checkUserFromToken($request);
+
+        if($userId === null) {
+            return response()->json([], 401);
+        }
+
         $recipes = $recipeRetriever->retrieve(new RecipesRetrieverRequest(null))->getRecipes();
 
         if($recipes === null) {
@@ -48,7 +57,6 @@ class RecipeController extends Controller
 
         return response()->json(["recipes" => $recipes]);
     }
-
 
     public function get(Request $request, RecipeRetriever $recipeRetriever)
     {

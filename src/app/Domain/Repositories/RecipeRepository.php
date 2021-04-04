@@ -17,4 +17,6 @@ interface RecipeRepository
     public function find(Id $id): Recipe;
 
     public function get():RecipeList;
+
+    public function getFromUserId(Id $userId): RecipeList;
 }

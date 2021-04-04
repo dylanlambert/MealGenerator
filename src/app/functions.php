@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http {
 
+    use App\Domain\Entities\User;
     use App\Domain\Utils\Id\Id;
     use App\Domain\Utils\Id\IdFactory;
     use App\Infrastructure\Utils\UserUtil;
+    use App\Infrastructure\Utils\Uuid;
     use App\Token;
     use Illuminate\Http\Request;
 
-    function createConnectionToken(Id $idUser): string
+    function createAuthToken(Id $idUser): string
     {
         $idFactory = app(IdFactory::class);
 
@@ -23,6 +25,31 @@ namespace App\Http {
         $model->save();
 
         return (string) $token;
+    }
+
+    function checkUserFromToken(Request $request): ?Id
+    {
+        if($request->bearerToken() === null) {
+            return null;
+        }
+
+        $tokenModel = Token::find($request->bearerToken());
+
+        if($tokenModel === null) {
+            return null;
+        }
+
+        $startValidityDate = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $tokenModel->start_validity_date);
+        $ttl = new \DateInterval('P3D');
+
+        $expirationDate = $startValidityDate->add($ttl);
+        $today = new \DateTimeImmutable();
+
+        if($today > $expirationDate) {
+            return null;
+        }
+
+        return Uuid::fromString($tokenModel->id);
     }
 
     function verifierUser(Request $request, callable $action)

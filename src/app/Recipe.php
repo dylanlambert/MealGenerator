@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @mixin \Eloquent
  * @property string $process
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereProcess($value)
+ * @property string $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereUserId($value)
  */
 class Recipe extends Model
 {
