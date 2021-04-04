@@ -122,12 +122,12 @@
                                     "userEmail": {
                                         "type": "string",
                                         "format": "email",
-                                        "example": "user1@mail.com"
+                                        "example": "dy.lambert@gmail.com"
                                     },
                                     "userPassword": {
                                         "type": "string",
                                         "format": "password",
-                                        "example": "PassWord12345"
+                                        "example": "intosatan"
                                     }
                                 },
                                 "type": "object"
@@ -137,14 +137,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Return user",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/UserDto"
-                                }
-                            }
-                        }
+                        "description": "Return connexion token"
                     },
                     "400": {
                         "description": "User not found",

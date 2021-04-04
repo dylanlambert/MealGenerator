@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Historic whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Historic whereRecipeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Historic whereUpdatedAt($value)
+ * @property string $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Historic whereUserId($value)
  */
 final class Historic extends Model
 {

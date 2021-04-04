@@ -17,12 +17,12 @@ namespace App\Application\User;
  * Class UserDto
  *
  */
-final class UserDto
+final class UserDto implements \JsonSerializable
 {
-    public string $userId;
-    public string $userEmail;
-    public string $userName;
-    public string $userFirstName;
+    private string $userId;
+    private string $userEmail;
+    private string $userName;
+    private string $userFirstName;
 
     public function __construct(string $userId, string $userEmail, string $userName, string $userFirstName)
     {
@@ -30,5 +30,35 @@ final class UserDto
         $this->userEmail = $userEmail;
         $this->userName = $userName;
         $this->userFirstName = $userFirstName;
+    }
+
+    public function userId(): string
+    {
+        return $this->userId;
+    }
+
+    public function userEmail(): string
+    {
+        return $this->userEmail;
+    }
+
+    public function userName(): string
+    {
+        return $this->userName;
+    }
+
+    public function userFirstName(): string
+    {
+        return $this->userFirstName;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'userId' => $this->userId,
+            'userEmail' => $this->userEmail,
+            'userName' => $this->userName,
+            'userFirstName' => $this->userFirstName,
+        ];
     }
 }

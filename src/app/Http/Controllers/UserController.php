@@ -8,9 +8,12 @@ use App\Application\User\Inscription;
 use App\Application\User\InscriptionRequest;
 use App\Application\User\UserRetriever;
 use App\Application\User\UserRetrieverRequest;
+use App\Infrastructure\Utils\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Annotations as OA;
+
+use function App\Http\createConnectionToken;
 
 final class UserController
 {
@@ -73,15 +76,15 @@ final class UserController
      *          description="Pass user credentials",
      *          @OA\JsonContent(
      *              required={"userEmail","userPassword"},
-     *              @OA\Property(property="userEmail", type="string", format="email", example="user1@mail.com"),
-     *              @OA\Property(property="userPassword", type="string", format="password", example="PassWord12345")
+     *              @OA\Property(property="userEmail", type="string", format="email", example="dy.lambert@gmail.com"),
+     *              @OA\Property(property="userPassword", type="string", format="password", example="intosatan")
      *          ),
      *      ),
      *
      *      @OA\Response(
      *          response=200,
-     *          description="Return user",
-     *          @OA\JsonContent( type="object", ref="#/components/schemas/UserDto")
+     *          description="Return connexion token",
+     *          @OA\Property(property="token", type="string", format="uuid"),
      *      ),
      *
      *      @OA\Response(
@@ -106,6 +109,8 @@ final class UserController
             return response()->json(['error' => $applicationResponse->error()], 400);
         }
 
-        return response()->json($applicationResponse->user());
+        $token = createConnectionToken(Uuid::fromString($applicationResponse->user()->userId()));
+
+        return response()->json($token);
     }
 }
