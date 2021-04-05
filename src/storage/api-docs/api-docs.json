@@ -5,6 +5,40 @@
         "version": "0.1"
     },
     "paths": {
+        "/ingredients/all": {
+            "get": {
+                "tags": [
+                    "Ingredients"
+                ],
+                "description": "Retrieve all ingredients",
+                "operationId": "App\\Http\\Controllers\\IngredientController::retrieve",
+                "responses": {
+                    "200": {
+                        "description": "Return ingredients",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "ingredients": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/IngredientDto"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/recipes/all": {
             "get": {
                 "tags": [
@@ -30,6 +64,81 @@
                                 }
                             }
                         }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/recipe/add": {
+            "post": {
+                "tags": [
+                    "Recipies"
+                ],
+                "description": "Add a recipe",
+                "operationId": "App\\Http\\Controllers\\RecipeController::add",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "ingredients",
+                                    "preparationTime",
+                                    "process"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "name"
+                                    },
+                                    "ingredients": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "format": "uuid"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "unite/gramme/millimeter"
+                                                },
+                                                "qty": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "preparationTime": {
+                                        "type": "integer",
+                                        "example": "300"
+                                    },
+                                    "process": {
+                                        "type": "string",
+                                        "example": "text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return the recipeId (recipe can be acceeded by url /recipe/{id}"
+                    },
+                    "401": {
+                        "description": "User unauthorize"
+                    },
+                    "400": {
+                        "description": "Bad request or server error during saving"
                     }
                 },
                 "security": [
@@ -127,12 +236,12 @@
                                     "userEmail": {
                                         "type": "string",
                                         "format": "email",
-                                        "example": "dy.lambert@gmail.com"
+                                        "example": "user1@mail.com"
                                     },
                                     "userPassword": {
                                         "type": "string",
                                         "format": "password",
-                                        "example": "intosatan"
+                                        "example": "PassWord12345"
                                     }
                                 },
                                 "type": "object"
@@ -166,6 +275,22 @@
     },
     "components": {
         "schemas": {
+            "IngredientDto": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Boeuf Bourgignon"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "RecipeDto"
+                }
+            },
             "RecipeDto": {
                 "properties": {
                     "id": {

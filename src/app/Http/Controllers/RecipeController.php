@@ -58,6 +58,74 @@ class RecipeController extends Controller
         return response()->json(["recipes" => $recipes]);
     }
 
+
+    /**
+     * @OA\Post(
+     *      security={{"bearer_token":{}}},
+     *      path="/recipe/add",
+     *      description="Add a recipe",
+     *      tags={"Recipies"},
+     *
+     *      @OA\RequestBody(
+     *          required=true,
+     *          description="Pass user credentials",
+     *          @OA\JsonContent(
+     *              required={"name","ingredients", "preparationTime", "process"},
+     *              @OA\Property(property="name", type="string", example="name"),
+     *              @OA\Property(property="ingredients", type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(property="id", type="string", format="uuid"),
+     *                      @OA\Property(property="type", type="string", example="unite/gramme/millimeter"),
+     *                      @OA\Property(property="qty", type="integer"),
+     *                  ),
+     *              ),
+     *              @OA\Property(property="preparationTime", type="integer", example="300"),
+     *              @OA\Property(property="process", type="string", example="text"),
+     *          ),
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=200,
+     *          description="Return the recipeId (recipe can be acceeded by url /recipe/{id}",
+     *          @OA\Property(property="recipeId", type="string", format="uuid"),
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=401,
+     *          description="User unauthorize",
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad request or server error during saving",
+     *      ),
+     *)
+     */
+    public function add(Request $request, RecipeRegisterer $registerer)
+    {
+        $userId = checkUserFromToken($request);
+
+        if($userId === null) {
+            return response()->json('', 401);
+        }
+
+        $applicationRequest = new RecipeRegistererRequest(
+            $request['name'],
+            $request['ingredients'] ?? [],
+            $request['preparationTime'],
+            $request['process'] === null ? '' : $request['process'],
+            $userId,
+        );
+
+        $applicationResponse = $registerer->register($applicationRequest);
+
+        if(!$applicationResponse->isRegistered()) {
+            return response()->json('', 400);
+        }
+
+        return response()->json((string) $applicationResponse->recipeId());
+    }
+
     public function get(Request $request, RecipeRetriever $recipeRetriever)
     {
       return verifierUser($request, function(User $user) use ($request, $recipeRetriever) {
@@ -70,14 +138,6 @@ class RecipeController extends Controller
 
           return view('Recipe.recipe', ['recipe' => $applicationResponse->getRecipe()]);
       });
-    }
-
-    public function register(Request $request, RecipeRegisterer $recipeRegisterer)
-    {
-       return verifierUser($request, function(User $user) use ($request, $recipeRegisterer) {
-           $applicationRequest = new RecipeRegistererRequest($request['name'], $request['preparationTime']);
-           $applicationResponse = $recipeRegisterer->register($applicationRequest);
-       });
     }
 
     public function getList(Request $request, RecipesRetriever $recipesRetriever)

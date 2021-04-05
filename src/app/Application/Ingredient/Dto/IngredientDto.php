@@ -4,7 +4,19 @@ declare(strict_types=1);
 
 namespace App\Application\Ingredient\Dto;
 
-final class IngredientDto
+
+/**
+ *
+ * @OA\Schema(
+ * @OA\Xml(name="RecipeDto"),
+ * @OA\Property(property="id", type="string", format="uuid"),
+ * @OA\Property(property="name", type="string", example="Boeuf Bourgignon")
+ * )
+ *
+ * Class IngredientDto
+ *
+ */
+final class IngredientDto implements \JsonSerializable
 {
     private string $id;
     private string $name;
@@ -23,5 +35,13 @@ final class IngredientDto
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+        ];
     }
 }

@@ -23,6 +23,10 @@ Route::post('/user/connexion', 'UserController@connexion');
 
 // Recipe
 Route::get('/recipes/all', 'RecipeController@retrieve');
+Route::post('/recipe/add', 'RecipeController@add');
+
+// Ingredients
+Route::get("/ingredients/all", "IngredientController@retrieve");
 
 // APP DEPRECATED
 Route::get('/connection', 'ConnectionController@showConnection');
@@ -32,7 +36,6 @@ Route::post('/inscription', 'InscriptionController@inscription');
 Route::get('/inscription', 'InscriptionController@getInscription');
 Route::get('/import', 'ImportController@import');
 Route::get('/recipes', 'RecipeController@getList');
-Route::post('/recipe', 'RecipeController@register');
 Route::get('/recipe/{recipeId}', 'RecipeController@get');
 Route::get('/recipe/update/{recipeId}', 'RecipeController@updateGet');
 Route::post('/recipe/update/{recipeId}', 'RecipeController@updatePost');
