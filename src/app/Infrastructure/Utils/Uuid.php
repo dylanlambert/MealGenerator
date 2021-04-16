@@ -31,4 +31,9 @@ final class Uuid implements Id
     {
         return $that instanceof $this && $this->id->equals($that->id);
     }
+
+    public function toString(): string
+    {
+        return $this->id->toString();
+    }
 }

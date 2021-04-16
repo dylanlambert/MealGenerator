@@ -17,8 +17,14 @@ final class RegisterRecipe
     private Id $userId;
     private Id $recipeId;
 
-    public function __construct(string $name, PreparationTime $preparationTime, QuantifiedIngredientList $ingredients, string $process, Id $userId, Id $recipeId)
-    {
+    public function __construct(
+        string $name,
+        PreparationTime $preparationTime,
+        QuantifiedIngredientList $ingredients,
+        string $process,
+        Id $userId,
+        Id $recipeId
+    ) {
         $this->name = $name;
         $this->preparationTime = $preparationTime;
         $this->ingredients = $ingredients;

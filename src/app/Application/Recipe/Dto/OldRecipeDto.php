@@ -16,12 +16,24 @@ final class OldRecipeDto
     private string $id;
     private string $name;
     private PreparationTime $preparationTime;
+    /**
+     * @var QuantifiedIngredientDto[]
+     */
     private array $ingredients;
     private string $url;
     private string $recipe;
 
-    public function __construct(string $id, string $name, PreparationTime $preparationTime, array $ingredients, string $url, string $recipe)
-    {
+    /**
+     * @param QuantifiedIngredientDto[] $ingredients
+     */
+    public function __construct(
+        string $id,
+        string $name,
+        PreparationTime $preparationTime,
+        array $ingredients,
+        string $url,
+        string $recipe
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->preparationTime = $preparationTime;
@@ -45,6 +57,9 @@ final class OldRecipeDto
         return $this->preparationTime;
     }
 
+    /**
+     * @return QuantifiedIngredientDto[]
+     */
     public function getIngredients(): array
     {
         return $this->ingredients;

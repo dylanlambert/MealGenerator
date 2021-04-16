@@ -1,10 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Domain\Utils\Id;
-
-
-use App\Domain\Utils\Id\Id;
 
 interface IdFactory
 {

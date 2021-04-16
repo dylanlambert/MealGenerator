@@ -30,9 +30,15 @@ final class RecipeDto
     public string $id;
     public string $name;
     public string $preparationTime;
+    /**
+     * @var array<array<string,string>>
+     */
     public array $ingredients;
     public string $recipe;
 
+    /**
+     * @param array<array<string,string>> $ingredients
+     */
     public function __construct(string $id, string $name, string $preparationTime, array $ingredients, string $recipe)
     {
         $this->id = $id;

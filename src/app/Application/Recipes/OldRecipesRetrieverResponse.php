@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Application\Recipes;
 
-use App\Application\Recipe\Dto\RecipeDto;
+use App\Application\Recipe\Dto\OldRecipeDto;
 
-final class RecipesRetrieverResponse
+final class OldRecipesRetrieverResponse
 {
     /**
-     * @var RecipeDto[]
+     * @var OldRecipeDto[]
      */
     private array $recipes;
 
     /**
-     * @param RecipeDto[] $recipes
+     * @param OldRecipeDto[] $recipes
      */
     public function __construct(array $recipes)
     {
@@ -22,7 +22,7 @@ final class RecipesRetrieverResponse
     }
 
     /**
-     * @return RecipeDto[]
+     * @return OldRecipeDto[]
      */
     public function getRecipes(): array
     {

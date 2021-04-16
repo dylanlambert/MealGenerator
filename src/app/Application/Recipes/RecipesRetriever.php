@@ -6,11 +6,12 @@ namespace App\Application\Recipes;
 
 use App\Application\Recipe\Dto\QuantifiedIngredientDto;
 use App\Application\Recipe\Dto\OldRecipeDto;
-use App\Application\Recipe\Dto\RecipeDto;
 use App\Domain\Entities\QuantifiedIngredient;
 use App\Domain\Entities\Recipe;
 use App\Domain\Repositories\RecipeRepository;
 use App\Domain\Utils\PreparationTime\PreparationTime;
+
+use function sprintf;
 
 final class RecipesRetriever
 {
@@ -24,7 +25,7 @@ final class RecipesRetriever
     /**
      * @deprecated
      */
-    public function oldRetrieve(RecipesRetrieverRequest $request): RecipesRetrieverResponse
+    public function oldRetrieve(RecipesRetrieverRequest $request): OldRecipesRetrieverResponse
     {
         $recipes = $this->recipeRepository->get();
 
@@ -33,54 +34,27 @@ final class RecipesRetriever
         }
         $recipesDto = $recipes
             ->map(
-                fn(Recipe $recipe) => new OldRecipeDto(
-                    (string)$recipe->getId(),
+                fn (Recipe $recipe) => new OldRecipeDto(
+                    $recipe->getId()->toString(),
                     $recipe->getName(),
                     $recipe->getPreparationTime(),
                     $recipe->getMeasuredIngredients()->map(
-                        fn(QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
-                            (string)$ingredient->getIngredient()->getId(),
+                        fn (QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
+                            $ingredient->getIngredient()->getId()->toString(),
                             $ingredient->getIngredient()->getName(),
                             $ingredient->getQuantity()->getFormatedQuantity(),
                             $ingredient->getQuantity()->getQuantity(),
                             $ingredient->getQuantity()->match(
-                                fn() => 'unit',
-                                fn() => 'gramme',
-                                fn() => 'milliliter',
+                                fn () => 'unit',
+                                fn () => 'gramme',
+                                fn () => 'milliliter',
                             )
                         )
                     ),
-                    sprintf('/recipe/%s', $recipe->getId()),
+                    sprintf('/recipe/%s', $recipe->getId()->toString()),
                     $recipe->getRecipe(),
                 )
             );
-        return new RecipesRetrieverResponse($recipesDto);
+        return new OldRecipesRetrieverResponse($recipesDto);
     }
-
-    public function retrieve(RecipesRetrieverRequest $request): RecipesRetrieverResponse
-    {
-        $recipes = $this->recipeRepository->get();
-
-        $recipesDto = $recipes
-            ->map(
-                fn(Recipe $recipe) => new RecipeDto(
-                    (string)$recipe->getId(),
-                    $recipe->getName(),
-                    $recipe->getPreparationTime()->getFormattedPreparationTime(),
-                    $recipe->getMeasuredIngredients()->map(
-                        function (QuantifiedIngredient $ingredient) {
-                            return
-                                [
-                                    'ingredientName' => $ingredient->getIngredient()->getName(),
-                                    'quantity' => $ingredient->getQuantity()->getFormatedQuantity(),
-                                ];
-                        }
-                    ),
-                    $recipe->getRecipe(),
-                )
-            );
-
-        return new RecipesRetrieverResponse($recipesDto);
-    }
-
 }

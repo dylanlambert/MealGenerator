@@ -18,7 +18,7 @@ final class PreparationTime
         return $this->time / 60 . ' minutes';
     }
 
-    public function getSeconds():int
+    public function getSeconds(): int
     {
         return $this->time;
     }

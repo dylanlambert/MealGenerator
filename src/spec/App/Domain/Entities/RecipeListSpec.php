@@ -14,9 +14,9 @@ use App\Domain\Utils\Measurement\Unit;
 use App\Domain\Utils\PreparationTime\PreparationTime;
 use PhpSpec\ObjectBehavior;
 
-class RecipeListSpec extends ObjectBehavior
+final class RecipeListSpec extends ObjectBehavior
 {
-    function it_filters_under_preaparation_time_givent()
+    public function it_filters_under_preaparation_time_givent()
     {
         $this->beConstructedWith(
             new Recipe(
@@ -24,7 +24,7 @@ class RecipeListSpec extends ObjectBehavior
                 'Recipe 1',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(
-                ...[
+                    ...[
                     new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
@@ -34,7 +34,7 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            ),
+                ),
                 'process',
             ),
             new Recipe(
@@ -42,7 +42,7 @@ class RecipeListSpec extends ObjectBehavior
                 'Recipe 2',
                 new PreparationTime(3600),
                 new QuantifiedIngredientList(
-                ...[
+                    ...[
                     new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
@@ -52,7 +52,7 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            ),
+                ),
                 'process',
             ),
         );
@@ -63,7 +63,7 @@ class RecipeListSpec extends ObjectBehavior
                 'Recipe 1',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(
-                ...[
+                    ...[
                     new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
@@ -73,7 +73,7 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            ),
+                ),
                 'process',
             ),
         );
@@ -81,7 +81,7 @@ class RecipeListSpec extends ObjectBehavior
         $this->getUnderPreparationTime(new PreparationTime(1800))->shouldBeLike($resultList);
     }
 
-    function it_checks_if_not_empty()
+    public function it_checks_if_not_empty()
     {
         $this->beConstructedWith(
             new Recipe(
@@ -89,7 +89,7 @@ class RecipeListSpec extends ObjectBehavior
                 'Recipe 1',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(
-                ...[
+                    ...[
                     new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
@@ -99,7 +99,7 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            ),
+                ),
                 'process',
             ),
             new Recipe(
@@ -107,7 +107,7 @@ class RecipeListSpec extends ObjectBehavior
                 'Recipe 2',
                 new PreparationTime(3600),
                 new QuantifiedIngredientList(
-                ...[
+                    ...[
                     new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
@@ -117,7 +117,7 @@ class RecipeListSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
                     ),
                 ]
-            ),
+                ),
                 'process',
             ),
         );
@@ -125,13 +125,13 @@ class RecipeListSpec extends ObjectBehavior
         $this->isEmpty()->shouldBe(false);
     }
 
-    function it_checks_if_empty()
+    public function it_checks_if_empty()
     {
         $this->beConstructedWith();
         $this->isEmpty()->shouldBe(true);
     }
 
-    function it_return_calculated_measured_ingredient_list()
+    public function it_return_calculated_measured_ingredient_list()
     {
         $this->beConstructedWith(
             new Recipe(

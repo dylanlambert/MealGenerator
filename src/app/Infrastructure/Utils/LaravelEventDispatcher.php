@@ -7,6 +7,8 @@ namespace App\Infrastructure\Utils;
 use App\Domain\Utils\Application\CommandBus;
 use App\Domain\Utils\Application\TransactionBroker;
 
+use function event;
+
 final class LaravelEventDispatcher implements CommandBus
 {
     private TransactionBroker $transactionBroker;

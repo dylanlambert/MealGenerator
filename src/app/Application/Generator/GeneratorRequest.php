@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Application\Generator;
 
-use App\Domain\Utils\PreparationTime\PreparationTime;
-
 final class GeneratorRequest
 {
     private int $numberOfRecipe;

@@ -11,6 +11,32 @@ stop:
 	docker-compose stop
 .PHONY: stop
 
+bcp: ide-helpers lint-php phpstan phpspec
+.PHONY: bcp
+
+lint-php: php-cs-fixer phpcbf phpcs
+.PHONY: lint-php
+
+php-cs-fixer: composer-check-install
+	$(EXEC_SERVER) vendor/bin/php-cs-fixer fix
+.PHONY: php-cs-fixer
+
+phpcbf: composer-check-install
+	$(EXEC_SERVER) composer phpcbf || true
+.PHONY: phpcbf
+
+phpcs: composer-check-install
+	$(EXEC_SERVER) composer phpcs
+.PHONY: phpcs
+
+phpstan: composer-check-install
+	$(EXEC_SERVER) php -d memory_limit=4G vendor/bin/phpstan analyze
+.PHONY: phpstan
+
+phpspec: composer-check-install
+	$(EXEC_SERVER_IT) vendor/bin/phpspec run -v
+.PHONY: phpspec
+
 server-bash:
 	docker-compose exec server bash
 .PHONY: start server-bash

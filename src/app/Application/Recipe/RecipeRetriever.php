@@ -10,6 +10,8 @@ use App\Domain\Entities\QuantifiedIngredient;
 use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\RecipeRepository;
 
+use function sprintf;
+
 final class RecipeRetriever
 {
     private RecipeRepository $recipeRepository;
@@ -25,28 +27,27 @@ final class RecipeRetriever
             $recipe = $this->recipeRepository->find($request->getId());
 
             $recipeDto = new OldRecipeDto(
-                (string) $recipe->getId(),
+                $recipe->getId()->toString(),
                 $recipe->getName(),
                 $recipe->getPreparationTime(),
                 $recipe->getMeasuredIngredients()->map(
-                    fn(QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
-                        (string) $ingredient->getIngredient()->getId(),
+                    fn (QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
+                        $ingredient->getIngredient()->getId()->toString(),
                         $ingredient->getIngredient()->getName(),
                         $ingredient->getQuantity()->getFormatedQuantity(),
                         $ingredient->getQuantity()->getQuantity(),
                         $ingredient->getQuantity()->match(
-                            fn()=>'unit',
-                            fn()=>'gramme',
-                            fn()=>'milliliter',
+                            fn () =>'unit',
+                            fn () =>'gramme',
+                            fn () =>'milliliter',
                         )
                     )
                 ),
-                sprintf('/recipe/%s', $recipe->getId()),
+                sprintf('/recipe/%s', $recipe->getId()->toString()),
                 $recipe->getRecipe(),
             );
 
             return new RecipeRetrieverResponse($recipeDto);
-
         } catch (NotFoundException $exception) {
             return new RecipeRetrieverResponse(null);
         }

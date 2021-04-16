@@ -4,7 +4,6 @@ namespace spec\App\Application\Recipes;
 
 use App\Application\Recipe\Dto\QuantifiedIngredientDto;
 use App\Application\Recipe\Dto\OldRecipeDto;
-use App\Application\Recipes\RecipesRetriever;
 use App\Application\Recipes\RecipesRetrieverRequest;
 use App\Domain\Entities\Ingredient;
 use App\Domain\Entities\QuantifiedIngredient;
@@ -17,14 +16,14 @@ use App\Domain\Utils\Measurement\Gramme;
 use App\Domain\Utils\PreparationTime\PreparationTime;
 use PhpSpec\ObjectBehavior;
 
-class RecipesRetrieverSpec extends ObjectBehavior
+final class RecipesRetrieverSpec extends ObjectBehavior
 {
-    function let(RecipeRepository $recipeRepository)
+    public function let(RecipeRepository $recipeRepository)
     {
         $this->beConstructedWith($recipeRepository);
     }
 
-    function it_retrieves_recipes(RecipeRepository $recipeRepository)
+    public function it_retrieves_recipes(RecipeRepository $recipeRepository)
     {
         $request = new RecipesRetrieverRequest(null);
 
@@ -34,7 +33,7 @@ class RecipesRetrieverSpec extends ObjectBehavior
                 'Recipe 1',
                 new PreparationTime(600),
                 new QuantifiedIngredientList(
-                ...[
+                    ...[
                     new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
@@ -44,7 +43,7 @@ class RecipesRetrieverSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id-1'), 'ingredientName')
                     ),
                 ]
-            ),
+                ),
                 'process',
             ),
             new Recipe(
@@ -52,7 +51,7 @@ class RecipesRetrieverSpec extends ObjectBehavior
                 'Recipe 2',
                 new PreparationTime(3600),
                 new QuantifiedIngredientList(
-                ...[
+                    ...[
                     new QuantifiedIngredient(
                         new Gramme('100'),
                         new Ingredient(new StringId('ingredient-id'), 'ingredientName')
@@ -62,7 +61,7 @@ class RecipesRetrieverSpec extends ObjectBehavior
                         new Ingredient(new StringId('ingredient-id-1'), 'ingredientName')
                     ),
                 ]
-            ),
+                ),
                 'process',
             ),
         );

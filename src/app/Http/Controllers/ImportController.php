@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Application\Recipe\RecipeRegisterer;
-use App\Application\Recipe\RecipeRegistererRequest;
-
-final class ImportController extends Controller
+final class ImportController
 {
-    public function import(RecipeRegisterer $registerer) {
+//    public function import(RecipeRegisterer $registerer): void
+//    {
 //        if (($handle = fopen('recettesTime.csv', "r")) !== FALSE) {
 //            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
 //                $request = new RecipeRegistererRequest(
@@ -20,5 +18,5 @@ final class ImportController extends Controller
 //            }
 //            fclose($handle);
 //        }
-    }
+//    }
 }

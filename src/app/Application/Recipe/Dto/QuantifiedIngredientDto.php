@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Application\Recipe\Dto;
 
-use spec\PhpSpec\Console\ApplicationSpec;
-
 final class QuantifiedIngredientDto
 {
     private string $id;
@@ -43,9 +41,6 @@ final class QuantifiedIngredientDto
         return $this->qtyNumber;
     }
 
-    /**
-     * @return string
-     */
     public function getQtyType(): string
     {
         return $this->qtyType;

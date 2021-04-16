@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use OpenApi\Annotations as OA;
 
 use function App\Http\createAuthToken;
+use function response;
 
 final class UserController
 {
@@ -45,9 +46,8 @@ final class UserController
      *      @OA\Response(response=200, description="Registration complete"),
      * )
      */
-    public function inscription(Request $request, Inscription $inscription):JsonResponse
+    public function inscription(Request $request, Inscription $inscription): JsonResponse
     {
-
         $applicationRequest = new InscriptionRequest(
             $request['userEmail'],
             $request['userPassword'],
@@ -57,11 +57,11 @@ final class UserController
 
         $applicationResponse = $inscription->inscrire($applicationRequest);
 
-        if(!$applicationResponse->isInscrit()) {
+        if (!$applicationResponse->isInscrit()) {
             return response()->json(['error' => 'Email already in use'], 400);
         }
 
-        return response()->json([],201);
+        return response()->json([], 201);
     }
 
 
@@ -96,7 +96,7 @@ final class UserController
      *      ),
      *)
      */
-    public function connexion(Request $request, UserRetriever $retriever):JsonResponse
+    public function connexion(Request $request, UserRetriever $retriever): JsonResponse
     {
         $applicationRequest = new UserRetrieverRequest(
             $request['userEmail'],
@@ -105,8 +105,12 @@ final class UserController
 
         $applicationResponse = $retriever->retrieve($applicationRequest);
 
-        if($applicationResponse->error() !== null) {
+        if ($applicationResponse->error() !== null) {
             return response()->json(['error' => $applicationResponse->error()], 400);
+        }
+
+        if ($applicationResponse->user() === null) {
+            return response()->json(['error' => 'user not found'], 404);
         }
 
         $token = createAuthToken(Uuid::fromString($applicationResponse->user()->userId()));

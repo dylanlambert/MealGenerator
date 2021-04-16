@@ -8,9 +8,6 @@ use App\Domain\Repositories\UserRepository;
 
 final class UserRetriever
 {
-    /**
-     * @var UserRepository
-     */
     private UserRepository $userRepository;
 
     public function __construct(UserRepository $userRepository)
@@ -29,7 +26,7 @@ final class UserRetriever
         return new UserRetrieverResponse(
             null,
             new UserDto(
-                (string)$user->id(),
+                $user->id()->toString(),
                 $user->adresseEmail(),
                 $user->nom(),
                 $user->prenom()

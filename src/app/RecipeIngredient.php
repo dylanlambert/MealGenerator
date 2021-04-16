@@ -6,7 +6,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\RecipeIngredient
@@ -30,14 +29,18 @@ final class RecipeIngredient extends Model
 {
     use HasUuidPrimeryKey;
 
+    /**
+     * @var bool
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint
+     */
     public $timestamps = false;
 
-    public function ingredient():BelongsTo
+    public function ingredient(): BelongsTo
     {
         return $this->belongsTo(Ingredient::class);
     }
 
-    public function recipe():BelongsTo
+    public function recipe(): BelongsTo
     {
         return $this->belongsTo(Recipe::class);
     }

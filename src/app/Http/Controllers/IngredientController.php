@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Application\Ingredient\IngredientsRetriever;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 use function App\Http\checkUserFromToken;
+use function response;
 
 final class IngredientController
 {
@@ -31,20 +33,16 @@ final class IngredientController
      *      ),
      *)
      */
-    public function retrieve(Request $request, IngredientsRetriever $retriever)
+    public function retrieve(Request $request, IngredientsRetriever $retriever): JsonResponse
     {
         $userId = checkUserFromToken($request);
 
-        if($userId === null) {
+        if ($userId === null) {
             return response()->json([], 401);
         }
 
         $ingredients = $retriever->retrieve()->getIngredients();
 
-        if($ingredients === null) {
-            return response('', 400);
-        }
-
-        return response()->json(["ingredients" => $ingredients]);
+        return response()->json(['ingredients' => $ingredients]);
     }
 }

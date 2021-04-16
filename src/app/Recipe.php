@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
 
 /**
  * App\Recipe
@@ -34,7 +31,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $user_id
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereUserId($value)
  */
-class Recipe extends Model
+final class Recipe extends Model
 {
     use HasUuidPrimeryKey;
 

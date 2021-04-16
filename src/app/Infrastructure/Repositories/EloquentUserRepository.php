@@ -5,20 +5,22 @@ declare(strict_types=1);
 namespace App\Infrastructure\Repositories;
 
 use App\Domain\Entities\User;
-use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\UserRepository;
 use App\Domain\Utils\Id\Id;
 use App\Infrastructure\Utils\Uuid;
+use App\User as UserModel;
+use Exception;
+
+use function hash;
 
 final class EloquentUserRepository implements UserRepository
 {
-
     public function find(Id $id): User
     {
-        $userModel = \App\User::whereId((string) $id)->firstOrFail();
+        $userModel = UserModel::whereId($id->toString())->firstOrFail();
 
         return new User(
-            Id::fromString($userModel->id),
+            Uuid::fromString($userModel->id),
             $userModel->nom,
             $userModel->prenom,
             $userModel->adresse_email
@@ -28,11 +30,11 @@ final class EloquentUserRepository implements UserRepository
     public function connection(string $adresseEmail, string $motDePasse): ?User
     {
         try {
-            $userModel = \App\User::where('adresse_email', $adresseEmail)
+            $userModel = UserModel::where('adresse_email', $adresseEmail)
                 ->where('password', hash('sha512', $motDePasse))
                 ->firstOrFail()
             ;
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return null;
         }
 
@@ -44,15 +46,11 @@ final class EloquentUserRepository implements UserRepository
         );
     }
 
-    /**
-     * @param string $adresseEmail
-     * @return User
-     */
     public function findUserByEmail(string $adresseEmail): ?User
     {
-        $userModel = \App\User::firstWhere('adresse_email', $adresseEmail);
+        $userModel = UserModel::firstWhere('adresse_email', $adresseEmail);
 
-        if($userModel !== null) {
+        if ($userModel !== null) {
             return new User(
                 Uuid::fromString($userModel->id),
                 $userModel->nom,
@@ -62,6 +60,5 @@ final class EloquentUserRepository implements UserRepository
         }
 
         return null;
-
     }
 }

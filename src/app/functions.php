@@ -10,7 +10,13 @@ namespace App\Http {
     use App\Infrastructure\Utils\UserUtil;
     use App\Infrastructure\Utils\Uuid;
     use App\Token;
+    use Illuminate\Http\RedirectResponse;
     use Illuminate\Http\Request;
+    use function app;
+    use DateTimeImmutable;
+    use DateInterval;
+    use function redirect;
+    use function session;
 
     function createAuthToken(Id $idUser): string
     {
@@ -19,45 +25,54 @@ namespace App\Http {
         $token = $idFactory->generateId();
 
         $model = new Token();
-        $model->id = (string) $idUser;
-        $model->token = (string) $token;
-        $model->start_validity_date = (new \DateTimeImmutable())->format('Y-m-d H:i:s');
+        $model->id = $idUser->toString();
+        $model->token = $token->toString();
+        $model->start_validity_date = (new DateTimeImmutable())->format('Y-m-d H:i:s');
         $model->save();
 
-        return (string) $token;
+        return $token->toString();
     }
 
     function checkUserFromToken(Request $request): ?Id
     {
-        if($request->bearerToken() === null) {
+        if ($request->bearerToken() === null) {
             return null;
         }
 
         $tokenModel = Token::find($request->bearerToken());
 
-        if($tokenModel === null) {
+        if ($tokenModel === null) {
             return null;
         }
 
-        $startValidityDate = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $tokenModel->start_validity_date);
-        $ttl = new \DateInterval('P3D');
+        $startValidityDate = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $tokenModel->start_validity_date);
+        $ttl = new DateInterval('P3D');
+
+        if (!$startValidityDate) {
+            return null;
+        }
 
         $expirationDate = $startValidityDate->add($ttl);
-        $today = new \DateTimeImmutable();
+        $today = new DateTimeImmutable();
 
-        if($today > $expirationDate) {
+        if ($today > $expirationDate) {
             return null;
         }
 
         return Uuid::fromString($tokenModel->id);
     }
 
+    /**
+     * @template T
+     * @param callable(User):T $action
+     * @return T | RedirectResponse
+     */
     function verifierUser(Request $request, callable $action)
     {
         $email = $request->session()->get('adresseEmail');
         $password = $request->session()->get('motDePasse');
 
-        if($email === null || $password === null) {
+        if ($email === null || $password === null) {
             return redirect('/connection');
         }
 
@@ -73,7 +88,8 @@ namespace App\Http {
         return $action($user);
     }
 
-    function setUserSession(Request $request) {
+    function setUserSession(Request $request): void
+    {
         session(['adresseEmail' => $request['adresseEmail']]);
         session(['motDePasse' => $request['password']]);
     }

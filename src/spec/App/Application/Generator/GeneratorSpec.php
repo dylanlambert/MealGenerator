@@ -2,7 +2,6 @@
 
 namespace spec\App\Application\Generator;
 
-use App\Application\Generator\Generator;
 use App\Application\Generator\GeneratorRequest;
 use App\Application\Recipe\Dto\OldRecipeDto;
 use App\Domain\Entities\QuantifiedIngredientList;
@@ -13,14 +12,14 @@ use App\Domain\Utils\Id\StringId;
 use App\Domain\Utils\PreparationTime\PreparationTime;
 use PhpSpec\ObjectBehavior;
 
-class GeneratorSpec extends ObjectBehavior
+final class GeneratorSpec extends ObjectBehavior
 {
-    function let(RecipeRepository $recipeRepository)
+    public function let(RecipeRepository $recipeRepository)
     {
         $this->beConstructedWith($recipeRepository);
     }
 
-    function it_generates_with_preparation_time(RecipeRepository $recipeRepository)
+    public function it_generates_with_preparation_time(RecipeRepository $recipeRepository)
     {
         $request = new GeneratorRequest(2, 600);
 
@@ -79,7 +78,7 @@ class GeneratorSpec extends ObjectBehavior
         $this->generate($request)->getRecipes()->shouldHaveCount(2);
     }
 
-    function it_generates_without_preparation_time(RecipeRepository $recipeRepository)
+    public function it_generates_without_preparation_time(RecipeRepository $recipeRepository)
     {
         $request = new GeneratorRequest(2, null);
 

@@ -17,12 +17,12 @@ final class IngredientsRetriever
         $this->ingredientRepository = $ingredientRepository;
     }
 
-    public function retrieve():IngredientsRetrieverResponse
+    public function retrieve(): IngredientsRetrieverResponse
     {
         $ingredients = $this->ingredientRepository->get();
         $dtos = $ingredients->map(
-            fn(Ingredient $ingredient) => new IngredientDto(
-                (string) $ingredient->getId(),
+            fn (Ingredient $ingredient) => new IngredientDto(
+                $ingredient->getId()->toString(),
                 $ingredient->getName(),
             )
         );

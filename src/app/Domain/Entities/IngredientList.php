@@ -4,23 +4,24 @@ declare(strict_types=1);
 
 namespace App\Domain\Entities;
 
-use App\Domain\Exceptions\NotFoundException;
-use App\Domain\Utils\Id\Id;
+use function array_map;
 
 final class IngredientList
 {
     /** @var Ingredient[] */
     private array $ingredients;
 
-    /**
-     * IngredientList constructor.
-     * @param Ingredient[]
-     */
     public function __construct(Ingredient ...$ingredients)
     {
         $this->ingredients = $ingredients;
     }
 
+    /**
+     * @template T
+     * @param callable(Ingredient):T $callable
+     * @return Ingredient[]
+     * @phpstan-return T[]
+     */
     public function map(callable $callable): array
     {
         return array_map($callable, $this->ingredients);

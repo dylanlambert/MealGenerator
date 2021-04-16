@@ -7,29 +7,27 @@ namespace App\Infrastructure\Handlers;
 use App\Domain\Commands\UpdateRecipe;
 use App\Domain\Entities\QuantifiedIngredient;
 use App\Domain\Exceptions\NotFoundException;
-use App\Domain\Utils\Measurement\Gramme;
-use App\Domain\Utils\Measurement\Milliliter;
-use App\Domain\Utils\Measurement\Unit;
 use App\Recipe;
 use App\RecipeIngredient;
+use Exception;
 
 final class UpdateRecipeDatabaseHandler
 {
-    public function handle(UpdateRecipe $command)
+    public function handle(UpdateRecipe $command): void
     {
         try {
-            $model = Recipe::findOrFail((string)$command->getRecipeId());
-        } catch (\Exception $exception) {
+            $model = Recipe::findOrFail($command->getRecipeId()->toString());
+        } catch (Exception $exception) {
             throw new NotFoundException();
         }
 
-        RecipeIngredient::where('recipe_id', (string) $command->getRecipeId())->delete();
+        RecipeIngredient::where('recipe_id', $command->getRecipeId()->toString())->delete();
 
         $command->getIngredients()->walk(
-        function(QuantifiedIngredient $ingredient) use ($command) {
+            function (QuantifiedIngredient $ingredient) use ($command): void {
                 $recipeIngredient = new RecipeIngredient();
-                $recipeIngredient->ingredient_id = (string) $ingredient->getIngredient()->getId();
-                $recipeIngredient->recipe_id = (string) $command->getRecipeId();
+                $recipeIngredient->ingredient_id = $ingredient->getIngredient()->getId()->toString();
+                $recipeIngredient->recipe_id = $command->getRecipeId()->toString();
                 $ingredient->getQuantity()->match(
                     function () use ($recipeIngredient, $ingredient) {
                         $recipeIngredient->quantity = $ingredient->getQuantity()->getQuantity();

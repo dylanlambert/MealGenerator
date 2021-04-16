@@ -6,33 +6,30 @@ namespace App\Infrastructure\Handlers;
 
 use App\Domain\Commands\RegisterRecipe;
 use App\Domain\Entities\QuantifiedIngredient;
-use App\Domain\Exceptions\NotFoundException;
-use App\Domain\Utils\Id\IdFactory;
 use App\Recipe;
 use App\RecipeIngredient;
 
 final class RegisterRecipeDatabaseHandler
 {
-
-    public function handle(RegisterRecipe $command)
+    public function handle(RegisterRecipe $command): void
     {
         $model = new Recipe();
 
         $recipeId = $command->recipeId();
 
-        $model->id = $recipeId;
+        $model->id = $recipeId->toString();
         $model->name = $command->name();
         $model->preparation_time = $command->preparationTime()->getSeconds();
         $model->process = $command->process();
-        $model->user_id = (string) $command->userId();
+        $model->user_id = $command->userId()->toString();
 
         $model->save();
 
         $command->ingredients()->walk(
-            function(QuantifiedIngredient $ingredient) use ($command, $recipeId) {
+            function (QuantifiedIngredient $ingredient) use ($recipeId): void {
                 $recipeIngredient = new RecipeIngredient();
-                $recipeIngredient->ingredient_id = (string) $ingredient->getIngredient()->getId();
-                $recipeIngredient->recipe_id = (string) $recipeId;
+                $recipeIngredient->ingredient_id = $ingredient->getIngredient()->getId()->toString();
+                $recipeIngredient->recipe_id = $recipeId->toString();
                 $ingredient->getQuantity()->match(
                     function () use ($recipeIngredient, $ingredient) {
                         $recipeIngredient->quantity = $ingredient->getQuantity()->getQuantity();

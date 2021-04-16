@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Utils\Measurement;
 
-use App\Domain\Utils\Measurement\Measurement;
-
 final class Gramme implements Measurement
 {
     private int $quantity;
@@ -20,11 +18,14 @@ final class Gramme implements Measurement
         return $this->quantity;
     }
 
-    public function getFormatedQuantity()
+    public function getFormatedQuantity(): string
     {
         return $this->quantity . 'g';
     }
 
+    /**
+     * @inheritdoc
+     */
     public function match(callable $ifUnit, callable $ifGramme, callable $ifMillimeter)
     {
         return $ifGramme();

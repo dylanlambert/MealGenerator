@@ -19,14 +19,15 @@ use App\Domain\Utils\PreparationTime\PreparationTime;
 use App\Infrastructure\Utils\Uuid;
 use App\Recipe as RecipeModel;
 use App\RecipeIngredient;
+use Exception;
 
 final class EloquentRecipeRepository implements RecipeRepository
 {
     public function find(Id $id): Recipe
     {
         try {
-            $model = RecipeModel::findOrFail((string) $id);
-        } catch (\Exception $exception) {
+            $model = RecipeModel::findOrFail($id->toString());
+        } catch (Exception $exception) {
             throw new NotFoundException();
         }
 
@@ -42,7 +43,7 @@ final class EloquentRecipeRepository implements RecipeRepository
     public function get(): RecipeList
     {
         $collection = RecipeModel::all();
-        /** @var Recipe $recipes */
+        /** @var Recipe[] $recipes */
         $recipes = $collection->map(function (RecipeModel $recipe) {
             return new Recipe(
                 Uuid::fromString($recipe->id),
@@ -56,42 +57,41 @@ final class EloquentRecipeRepository implements RecipeRepository
         return new RecipeList(...$recipes);
     }
 
-    private function measuredIngredientListFromRecipeModel(RecipeModel $model)
+    private function measuredIngredientListFromRecipeModel(RecipeModel $model): QuantifiedIngredientList
     {
         return new QuantifiedIngredientList(
             ... $model->recipeIngredient->map(
-            function (RecipeIngredient $recipeIngredient) {
+                function (RecipeIngredient $recipeIngredient) {
+                    switch ($recipeIngredient->measurement) {
+                        case 'unit':
+                            $measurement = new Unit($recipeIngredient->quantity);
+                            break;
+                        case 'gramme':
+                            $measurement = new Gramme($recipeIngredient->quantity);
+                            break;
+                        case 'millimeter':
+                            $measurement = new Milliliter($recipeIngredient->quantity);
+                            break;
+                        default:
+                            throw new Exception('should not happened');
+                    }
 
-                switch ($recipeIngredient->measurement) {
-                    case 'unit' :
-                        $measurement = new Unit($recipeIngredient->quantity);
-                        break;
-                    case 'gramme' :
-                        $measurement = new Gramme($recipeIngredient->quantity);
-                        break;
-                    case 'millimeter' :
-                        $measurement = new Milliliter($recipeIngredient->quantity);
-                        break;
-                    default :
-                        throw new \Exception('should not happened');
+                    return new QuantifiedIngredient(
+                        $measurement,
+                        new Ingredient(
+                            Uuid::fromString($recipeIngredient->ingredient->id),
+                            $recipeIngredient->ingredient->name,
+                        ),
+                    );
                 }
-
-                return new QuantifiedIngredient(
-                    $measurement,
-                    new Ingredient(
-                        Uuid::fromString($recipeIngredient->ingredient->id),
-                        $recipeIngredient->ingredient->name,
-                    ),
-                );
-            }
-        )
+            )
         );
     }
 
     public function getFromUserId(Id $userId): RecipeList
     {
-        $collection = RecipeModel::whereUserId((string) $userId)->get();
-        /** @var Recipe $recipes */
+        $collection = RecipeModel::whereUserId($userId->toString())->get();
+        /** @var Recipe[] $recipes */
         $recipes = $collection->map(function (RecipeModel $recipe) {
             return new Recipe(
                 Uuid::fromString($recipe->id),

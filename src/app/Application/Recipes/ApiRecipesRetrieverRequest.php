@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Application\Recipes;
 
-
 use App\Domain\Utils\Id\Id;
 
 final class ApiRecipesRetrieverRequest

@@ -27,7 +27,8 @@ final class QuantifiedIngredient
         return $this->ingredient;
     }
 
-    public function addQuantity(Measurement $measurement): self {
+    public function addQuantity(Measurement $measurement): self
+    {
         return new self($this->quantity->addQuantity($measurement->getQuantity()), $this->ingredient);
     }
 }

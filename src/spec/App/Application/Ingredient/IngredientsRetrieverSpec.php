@@ -3,22 +3,20 @@
 namespace spec\App\Application\Ingredient;
 
 use App\Application\Ingredient\Dto\IngredientDto;
-use App\Application\Ingredient\IngredientsRetriever;
-use App\Application\Recipe\Dto\QuantifiedIngredientDto;
 use App\Domain\Entities\Ingredient;
 use App\Domain\Entities\IngredientList;
 use App\Domain\Repositories\IngredientRepository;
 use App\Domain\Utils\Id\StringId;
 use PhpSpec\ObjectBehavior;
 
-class IngredientsRetrieverSpec extends ObjectBehavior
+final class IngredientsRetrieverSpec extends ObjectBehavior
 {
-    function let(IngredientRepository $ingredientRepository)
+    public function let(IngredientRepository $ingredientRepository)
     {
         $this->beConstructedWith($ingredientRepository);
     }
 
-    function it_retrieves_ingredient(IngredientRepository $ingredientRepository)
+    public function it_retrieves_ingredient(IngredientRepository $ingredientRepository)
     {
         $ingredients = new IngredientList(
             new Ingredient(

@@ -16,9 +16,9 @@ use App\Domain\Utils\Measurement\Unit;
 use App\Domain\Utils\PreparationTime\PreparationTime;
 use PhpSpec\ObjectBehavior;
 
-class RecipeUpdaterSpec extends ObjectBehavior
+final class RecipeUpdaterSpec extends ObjectBehavior
 {
-    function let(CommandBus $commandBus, IngredientRepository $ingredientRepository)
+    public function let(CommandBus $commandBus, IngredientRepository $ingredientRepository)
     {
         $this->beConstructedWith($commandBus, $ingredientRepository);
     }

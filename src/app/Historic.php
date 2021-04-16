@@ -31,7 +31,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 final class Historic extends Model
 {
-    public function recipe():HasMany
+    public function recipe(): HasMany
     {
         return $this->hasMany(Recipe::class);
     }

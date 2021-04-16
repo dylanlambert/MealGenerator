@@ -13,12 +13,12 @@ final class InscriptionResponse
         $this->error = $error;
     }
 
-    public function isInscrit():bool
+    public function isInscrit(): bool
     {
         return $this->error === null;
     }
 
-    public function error():?string
+    public function error(): ?string
     {
         return $this->error;
     }

@@ -17,10 +17,10 @@ final class InscrireUserDatabaseHandler
         $this->idFactory = $idFactory;
     }
 
-    public function handle(InscrireUser $command)
+    public function handle(InscrireUser $command): void
     {
         $model = new User();
-        $model->id = (string) $this->idFactory->generateId();
+        $model->id = $this->idFactory->generateId()->toString();
         $model->adresse_email = $command->email();
         $model->password = $command->password();
         $model->prenom = $command->prenom();

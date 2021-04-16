@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Ingredient\Dto;
 
+use JsonSerializable;
 
 /**
  *
@@ -16,7 +17,7 @@ namespace App\Application\Ingredient\Dto;
  * Class IngredientDto
  *
  */
-final class IngredientDto implements \JsonSerializable
+final class IngredientDto implements JsonSerializable
 {
     private string $id;
     private string $name;
@@ -37,7 +38,10 @@ final class IngredientDto implements \JsonSerializable
         return $this->name;
     }
 
-    public function jsonSerialize()
+    /**
+     * @return array<string,mixed>
+     */
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

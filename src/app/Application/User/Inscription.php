@@ -11,9 +11,6 @@ use App\Domain\Utils\Application\CommandBus;
 final class Inscription
 {
     private CommandBus $commandBus;
-    /**
-     * @var UserRepository
-     */
     private UserRepository $userRepository;
 
     public function __construct(CommandBus $commandBus, UserRepository $userRepository)
@@ -33,7 +30,7 @@ final class Inscription
 
         $user = $this->userRepository->findUserByEmail($request->email());
 
-        if($user !== null) {
+        if ($user !== null) {
             return new InscriptionResponse('email already used');
         }
 

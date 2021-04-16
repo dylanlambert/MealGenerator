@@ -15,8 +15,13 @@ final class Recipe
     private QuantifiedIngredientList $measuredIngredients;
     private string $recipe;
 
-    public function __construct(Id $id, string $name, PreparationTime $preparationTime, QuantifiedIngredientList $measuredIngredients, string $recipe)
-    {
+    public function __construct(
+        Id $id,
+        string $name,
+        PreparationTime $preparationTime,
+        QuantifiedIngredientList $measuredIngredients,
+        string $recipe
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->preparationTime = $preparationTime;

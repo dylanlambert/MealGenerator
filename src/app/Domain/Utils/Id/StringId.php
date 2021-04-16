@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Utils\Id;
 
-use App\Domain\Utils\Id\Id;
-
 final class StringId implements Id
 {
     private string $id;
@@ -27,6 +25,11 @@ final class StringId implements Id
 
     public function sameAs(Id $that): bool
     {
-        return (string)$this === (string)$that;
+        return $this->toString() === $that->toString();
+    }
+
+    public function toString(): string
+    {
+        return $this->id;
     }
 }

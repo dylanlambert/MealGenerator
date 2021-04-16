@@ -11,6 +11,8 @@ use App\Domain\Entities\Recipe;
 use App\Domain\Repositories\RecipeRepository;
 use App\Domain\Utils\PreparationTime\PreparationTime;
 
+use function sprintf;
+
 final class Generator
 {
     private RecipeRepository $recipeRepository;
@@ -23,44 +25,44 @@ final class Generator
     public function generate(GeneratorRequest $request): GeneratorResponse
     {
         $recipes = $this->recipeRepository->get();
-        if($request->getPreparationTime() !== null) {
+        if ($request->getPreparationTime() !== null) {
             $recipes = $recipes->getUnderPreparationTime(new PreparationTime($request->getPreparationTime()));
         }
         $recipes = $recipes->rand($request->getNumberOfRecipe());
 
         $recipesDto = $recipes->map(
-            fn(Recipe $recipe) => new OldRecipeDto(
-                (string) $recipe->getId(),
+            fn (Recipe $recipe) => new OldRecipeDto(
+                $recipe->getId()->toString(),
                 $recipe->getName(),
                 $recipe->getPreparationTime(),
                 $recipe->getMeasuredIngredients()->map(
-                    fn(QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
-                        (string) $ingredient->getIngredient()->getId(),
+                    fn (QuantifiedIngredient $ingredient) => new QuantifiedIngredientDto(
+                        $ingredient->getIngredient()->getId()->toString(),
                         $ingredient->getIngredient()->getName(),
                         $ingredient->getQuantity()->getFormatedQuantity(),
                         $ingredient->getQuantity()->getQuantity(),
                         $ingredient->getQuantity()->match(
-                            fn()=>'unit',
-                            fn()=>'gramme',
-                            fn()=>'milliliter',
+                            fn () =>'unit',
+                            fn () =>'gramme',
+                            fn () =>'milliliter',
                         ),
                     ),
                 ),
-                sprintf('/recipe/%s', $recipe->getId()),
+                sprintf('/recipe/%s', $recipe->getId()->toString()),
                 $recipe->getRecipe(),
             )
         );
 
         $ingredientsDto = $recipes->getIngredientsCombined()->map(
-            fn(QuantifiedIngredient $quantifiedIngredient) => new QuantifiedIngredientDto(
-                (string) $quantifiedIngredient->getIngredient()->getId(),
+            fn (QuantifiedIngredient $quantifiedIngredient) => new QuantifiedIngredientDto(
+                $quantifiedIngredient->getIngredient()->getId()->toString(),
                 $quantifiedIngredient->getIngredient()->getName(),
                 $quantifiedIngredient->getQuantity()->getFormatedQuantity(),
                 $quantifiedIngredient->getQuantity()->getQuantity(),
                 $quantifiedIngredient->getQuantity()->match(
-                    fn()=>'unit',
-                    fn()=>'gramme',
-                    fn()=>'milliliter',
+                    fn () =>'unit',
+                    fn () =>'gramme',
+                    fn () =>'milliliter',
                 )
             )
         );

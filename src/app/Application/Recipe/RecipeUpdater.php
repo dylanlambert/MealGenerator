@@ -8,7 +8,6 @@ use App\Domain\Commands\UpdateRecipe;
 use App\Domain\Entities\Ingredient;
 use App\Domain\Entities\QuantifiedIngredient;
 use App\Domain\Entities\QuantifiedIngredientList;
-use App\Domain\Exceptions\NotFoundException;
 use App\Domain\Repositories\IngredientRepository;
 use App\Domain\Utils\Application\CommandBus;
 use App\Domain\Utils\Measurement\Gramme;
@@ -16,6 +15,11 @@ use App\Domain\Utils\Measurement\Milliliter;
 use App\Domain\Utils\Measurement\Unit;
 use App\Domain\Utils\PreparationTime\PreparationTime;
 use App\Infrastructure\Utils\Uuid;
+use PHPStan\ShouldNotHappenException;
+use Exception;
+
+use function array_values;
+use function array_map;
 
 final class RecipeUpdater
 {
@@ -31,7 +35,7 @@ final class RecipeUpdater
     public function update(RecipeUpdaterRequest $request): RecipeUpdaterResponse
     {
         $ids = array_values(array_map(
-            fn(array $ingredient) => Uuid::fromString($ingredient['id']),
+            fn (array $ingredient) => Uuid::fromString($ingredient['id']),
             $request->getIngredients(),
         ));
 
@@ -39,29 +43,35 @@ final class RecipeUpdater
 
         $measuredIngredient = $ingredients->map(
             function (Ingredient $ingredient) use ($request) {
-            $datas = $this->array_find(
-                $request->getIngredients(),
-                fn(array $date) => $date['id'] === (string)$ingredient->getId(),
-            );
-            $type = $datas['type'];
-            switch ($type) {
-                case 'unite':
-                    $unit = new Unit((int) $datas['qty']);
-                    break;
-                case 'gramme' :
-                    $unit = new Gramme((int) $datas['qty']);
-                    break;
-                case 'millimeter' :
-                    $unit = new Milliliter((int) $datas['qty']);
-                    break;
-                default :
-                    throw new \Exception('should not happened');
+                $datas = $this->arrayFind(
+                    $request->getIngredients(),
+                    fn (array $date) => $date['id'] === $ingredient->getId()->toString(),
+                );
+
+                if ($datas === null) {
+                    throw new ShouldNotHappenException();
+                }
+
+                $type = $datas['type'];
+                switch ($type) {
+                    case 'unite':
+                        $unit = new Unit((int) $datas['qty']);
+                        break;
+                    case 'gramme':
+                        $unit = new Gramme((int) $datas['qty']);
+                        break;
+                    case 'millimeter':
+                        $unit = new Milliliter((int) $datas['qty']);
+                        break;
+                    default:
+                        throw new Exception('should not happened');
+                }
+                return new QuantifiedIngredient(
+                    $unit,
+                    $ingredient
+                );
             }
-            return new QuantifiedIngredient(
-                $unit,
-                $ingredient
-            );
-        });
+        );
 
         $command = new UpdateRecipe(
             Uuid::fromString($request->getRecipeId()),
@@ -73,14 +83,22 @@ final class RecipeUpdater
 
         try {
             $this->commandBus->dispatch($command);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return new RecipeUpdaterResponse(false);
         }
 
         return new RecipeUpdaterResponse(true);
     }
 
-    private  function array_find(array $array, callable $finder)
+    /**
+     * @template Item
+     * @phpstan-param array<mixed, Item> $array
+     * @phpstan-param callable(Item): bool $finder
+     * @phpstan-return Item|null
+     * @param array $array
+     * @return mixed
+     */
+    private function arrayFind(array $array, callable $finder)
     {
         foreach ($array as $item) {
             if ($finder($item)) {

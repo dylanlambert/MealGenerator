@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Application\User;
 
+use function hash;
+
 final class InscriptionRequest
 {
     private string $email;

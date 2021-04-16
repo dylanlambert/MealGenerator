@@ -18,14 +18,14 @@ use App\Domain\Utils\PreparationTime\PreparationTime;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class RecipeRetrieverSpec extends ObjectBehavior
+final class RecipeRetrieverSpec extends ObjectBehavior
 {
-    function let(RecipeRepository $recipeRepository)
+    public function let(RecipeRepository $recipeRepository)
     {
         $this->beConstructedWith($recipeRepository);
     }
 
-    function it_retrieves_recipe(RecipeRepository $recipeRepository)
+    public function it_retrieves_recipe(RecipeRepository $recipeRepository)
     {
         $request = new RecipeRetrieverRequest(new StringId('recipe-id'));
 
@@ -66,7 +66,7 @@ class RecipeRetrieverSpec extends ObjectBehavior
         $this->retrieve($request)->getRecipe()->shouldBeLike($recipeDto);
     }
 
-    function it_returns_null_when_not_found(RecipeRepository $recipeRepository)
+    public function it_returns_null_when_not_found(RecipeRepository $recipeRepository)
     {
         $request = new RecipeRetrieverRequest(new StringId('recipe-id'));
 
