@@ -13,7 +13,6 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/dnoegel/php-xdg-base-dir" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/cache" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/collections" />
@@ -135,6 +134,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/zircote/swagger-php" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/swagger-api/swagger-ui" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/darkaonline/l5-swagger" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/deprecations" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
