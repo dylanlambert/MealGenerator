@@ -26,7 +26,7 @@ final class Milliliter implements Measurement
     /**
      * @inheritdoc
      */
-    public function match(callable $ifUnit, callable $ifGramme, callable $ifMillimeter)
+    public function match(callable $ifUnit, callable $ifGramme, callable $ifMillimeter): mixed
     {
         return $ifMillimeter();
     }

@@ -15,7 +15,7 @@ final class LaravelTransactionBroker implements TransactionBroker
     /**
      * @inheritDoc
      */
-    public function transactional(callable $callable)
+    public function transactional(callable $callable): mixed
     {
         if ($this->currentlyInTransaction) {
             return $callable();

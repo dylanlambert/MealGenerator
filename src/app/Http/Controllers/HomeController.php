@@ -14,10 +14,7 @@ use function view;
 
 final class HomeController
 {
-    /**
-     * @return RedirectResponse|View
-     */
-    public function get(Request $request)
+    public function get(Request $request): RedirectResponse|View
     {
         return verifierUser($request, function (User $user) {
             return view('home.home');

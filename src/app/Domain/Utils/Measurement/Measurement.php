@@ -13,11 +13,10 @@ interface Measurement
      * @param callable():T $ifUnit
      * @param callable():T $ifGramme
      * @param callable():T $ifMillimeter
-     * @return mixed
      * @phpstan-return T
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint
      */
-    public function match(callable $ifUnit, callable $ifGramme, callable $ifMillimeter);
+    public function match(callable $ifUnit, callable $ifGramme, callable $ifMillimeter): mixed;
 
     public function getQuantity(): int;
 

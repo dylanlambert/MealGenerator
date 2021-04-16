@@ -96,9 +96,8 @@ final class RecipeUpdater
      * @phpstan-param callable(Item): bool $finder
      * @phpstan-return Item|null
      * @param array $array
-     * @return mixed
      */
-    private function arrayFind(array $array, callable $finder)
+    private function arrayFind(array $array, callable $finder): mixed
     {
         foreach ($array as $item) {
             if ($finder($item)) {

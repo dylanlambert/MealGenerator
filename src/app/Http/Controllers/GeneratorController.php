@@ -16,10 +16,7 @@ use function view;
 
 final class GeneratorController
 {
-    /**
-     * @return RedirectResponse|View
-     */
-    public function generate(Request $request, Generator $generator)
+    public function generate(Request $request, Generator $generator): RedirectResponse|View
     {
         return verifierUser(
             $request,

@@ -94,3 +94,42 @@ namespace App\Http {
         session(['motDePasse' => $request['password']]);
     }
 }
+
+namespace App\Utils {
+    /**
+     * @template Item
+     * @phpstan-param array<mixed, Item> $array
+     * @phpstan-param callable(Item): bool $itemMatches
+     * @phpstan-return Item|null
+     * @param array $array
+     */
+    function array_find(array $array, callable $itemMatches): mixed
+    {
+        $key = array_find_key($array, $itemMatches);
+
+        if ($key === null) {
+            return null;
+        }
+
+        return $array[$key];
+    }
+
+    /**
+     * @template Key
+     * @template Item
+     * @phpstan-param array<Key, Item> $array
+     * @phpstan-param callable(Item): bool $itemMatches
+     * @phpstan-return Key|null
+     * @param array $array
+     */
+    function array_find_key(array $array, callable $itemMatches): mixed
+    {
+        foreach ($array as $key => $item) {
+            if ($itemMatches($item)) {
+                return $key;
+            }
+        }
+
+        return null;
+    }
+}

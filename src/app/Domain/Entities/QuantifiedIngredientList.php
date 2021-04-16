@@ -63,9 +63,8 @@ final class QuantifiedIngredientList
      * @phpstan-param callable(Item): bool $finder
      * @phpstan-return int|string|null
      * @param array $array
-     * @return mixed
      */
-    private static function arrayFind(array $array, callable $finder)
+    private static function arrayFind(array $array, callable $finder): mixed
     {
         foreach ($array as $key => $item) {
             if ($finder($item)) {

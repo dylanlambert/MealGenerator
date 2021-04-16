@@ -52,10 +52,7 @@ final class EloquentIngredientRepository implements IngredientRepository
         return new IngredientList(...$ingredients);
     }
 
-    /**
-     * @return mixed
-     */
-    private function constructFromCollection(Collection $collection)
+    private function constructFromCollection(Collection $collection): mixed
     {
         return $collection->map(function (IngredientModel $ingredient) {
             return new Ingredient(

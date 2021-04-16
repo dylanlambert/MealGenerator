@@ -60,10 +60,7 @@ final class RecipeController
         return response()->json(['recipes' => $recipes]);
     }
 
-    /**
-     * @return RedirectResponse|View|JsonResponse
-     */
-    public function get(Request $request, RecipeRetriever $recipeRetriever)
+    public function get(Request $request, RecipeRetriever $recipeRetriever): RedirectResponse|View|JsonResponse
     {
         return verifierUser(
             $request,
@@ -129,10 +126,7 @@ final class RecipeController
         );
     }
 
-    /**
-     * @return RedirectResponse|View
-     */
-    public function getList(Request $request, RecipesRetriever $recipesRetriever)
+    public function getList(Request $request, RecipesRetriever $recipesRetriever): RedirectResponse|View
     {
         return verifierUser(
             $request,

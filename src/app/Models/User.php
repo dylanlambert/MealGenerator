@@ -41,6 +41,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAdresseEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNom($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePrenom($value)
+ * @method static \Database\Factories\UserFactory factory(...$parameters)
  */
 final class User extends Authenticatable
 {
